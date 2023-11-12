@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    {% load static %}
+    {% load compress %}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'scss/page/product.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
+</head>
+<body>
+    <div id="app">
+        {% include "components/header.html" %}
+        {% include "components/menu.html" %}
+        {% include "components/details.html" %}
+        {% include "components/footer.html" %}
+    </div>
+    {% comment %} <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> {% endcomment %}
+    {% comment %} <script src="{% static "js/homepage.js" %}"></script> {% endcomment %}
+</body>
+</html>
+

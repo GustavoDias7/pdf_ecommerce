@@ -1,0 +1,35 @@
+{% load static%} {% load custom_tags %}
+<section>
+  <div class="container">
+    <div class="details">
+      <figure class="main-image">
+        <img src="{% static "img/placeholder-1.svg" %}" alt="Placeholder 2" />
+      </figure>
+      <aside class="main-infos">
+        <article>
+          <header>
+            <h2>{{product.name}}</h2>
+            {% comment %}
+            <p>5/5</p>
+            {% endcomment %}
+          </header>
+          <section>
+            <ul>
+              <li>
+                <strong>Description:</strong>
+                <span>{{product.description}}</span>
+              </li>
+            </ul>
+          </section>
+          <footer>
+            <li>
+              <strong>Price:</strong>
+              <span>R$ {{product.price|int_price}}</span>
+            </li>
+          </footer>
+        </article>
+        <button class="gn-button pm-button">Comprar</button>
+      </aside>
+    </div>
+  </div>
+</section>
