@@ -1,0 +1,31 @@
+.gn-button {
+  @include flex-center-center;
+  width: fit-content;
+  height: 48px;
+  padding: 0px 20px;
+  font-size: 1rem;
+  color: $primary-color-500;
+  cursor: pointer;
+  border-radius: 32px;
+  border: none;
+  outline: none;
+  background-color: $neutral-color-100;
+  transition: all 0.2s ease 0s;
+}
+.gn-button:focus,
+.gn-button:hover {
+  opacity: 0.8;
+}
+.gn-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.pm-button {
+  background-color: $primary-color-500;
+  color: $neutral-color-100;
+}
+.sc-button {
+  background-color: transparent;
+  border: $primary-border;
+}

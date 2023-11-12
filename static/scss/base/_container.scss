@@ -1,0 +1,28 @@
+@media (max-width: #{$sm - 1px}) {
+  .container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+@media (min-width: $sm) {
+  .container {
+    width: 100%;
+    max-width: $sm;
+    margin: 0px auto;
+  }
+}
+@media (min-width: $md) {
+  .container {
+    max-width: $md;
+  }
+}
+@media (min-width: $lg) {
+  .container {
+    max-width: $lg;
+  }
+}
+@media (min-width: $xl) {
+  .container {
+    max-width: $xl;
+  }
+}

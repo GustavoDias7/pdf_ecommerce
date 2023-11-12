@@ -1,0 +1,1119 @@
+/* color */
+/* transition */
+/* border */
+/* box-shadow */
+@import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=PT+Mono&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* line 3, static/scss/base/_global.scss */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 12, static/scss/base/_global.scss */
+body,
+html {
+  min-height: 100%; }
+
+/* line 17, static/scss/base/_global.scss */
+a {
+  text-decoration: none; }
+
+/* line 21, static/scss/base/_global.scss */
+a,
+button {
+  transition: 0.3s;
+  outline: none; }
+  /* line 26, static/scss/base/_global.scss */
+  a:focus, a:hover,
+  button:focus,
+  button:hover {
+    opacity: 0.6; }
+  /* line 30, static/scss/base/_global.scss */
+  a:disabled,
+  button:disabled {
+    opacity: 0.4; }
+
+/* line 35, static/scss/base/_global.scss */
+li {
+  list-style-type: none; }
+
+@media (max-width: 639px) {
+  /* line 2, static/scss/base/_container.scss */
+  .container {
+    padding-right: 20px;
+    padding-left: 20px; } }
+
+@media (min-width: 640px) {
+  /* line 8, static/scss/base/_container.scss */
+  .container {
+    width: 100%;
+    max-width: 640px;
+    margin: 0px auto; } }
+
+@media (min-width: 768px) {
+  /* line 15, static/scss/base/_container.scss */
+  .container {
+    max-width: 768px; } }
+
+@media (min-width: 1024px) {
+  /* line 20, static/scss/base/_container.scss */
+  .container {
+    max-width: 1024px; } }
+
+@media (min-width: 1280px) {
+  /* line 25, static/scss/base/_container.scss */
+  .container {
+    max-width: 1280px; } }
+
+/* line 1, static/scss/components/_buttons.scss */
+.gn-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 48px;
+  padding: 0px 20px;
+  font-size: 1rem;
+  color: #486284;
+  cursor: pointer;
+  border-radius: 32px;
+  border: none;
+  outline: none;
+  background-color: #fafafa;
+  transition: all 0.2s ease 0s; }
+
+/* line 15, static/scss/components/_buttons.scss */
+.gn-button:focus,
+.gn-button:hover {
+  opacity: 0.8; }
+
+/* line 19, static/scss/components/_buttons.scss */
+.gn-button:disabled {
+  opacity: 0.5;
+  cursor: wait; }
+
+/* line 24, static/scss/components/_buttons.scss */
+.pm-button {
+  background-color: #486284;
+  color: #fafafa; }
+
+/* line 28, static/scss/components/_buttons.scss */
+.sc-button {
+  background-color: transparent;
+  border: 1px solid #7b95b7; }
+
+/* line 15, static/scss/components/_form.scss */
+.form .row {
+  position: relative;
+  width: 100%;
+  max-width: 312px;
+  margin-bottom: 12px; }
+  /* line 21, static/scss/components/_form.scss */
+  .form .row:last-of-type {
+    margin-bottom: 0px; }
+
+/* line 26, static/scss/components/_form.scss */
+.form .label {
+  display: block;
+  margin-bottom: 4px; }
+
+/* line 31, static/scss/components/_form.scss */
+.form .input,
+.form .select {
+  display: block;
+  width: 100%;
+  max-width: 312px;
+  height: 56px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  border-radius: 8px;
+  padding: 16px;
+  outline: none;
+  border: 1px solid;
+  transition: border 0.2s ease 0s;
+  background-color: transparent;
+  border-color: #486284; }
+  /* line 47, static/scss/components/_form.scss */
+  .form .input:focus ~ .label, .form .input:hover ~ .label,
+  .form .select:focus ~ .label,
+  .form .select:hover ~ .label {
+    top: -16px/2; }
+  /* line 54, static/scss/components/_form.scss */
+  .form .input:disabled,
+  .form .select:disabled {
+    opacity: 0.4;
+    cursor: not-allowed; }
+  /* line 59, static/scss/components/_form.scss */
+  .form .input::placeholder,
+  .form .select::placeholder {
+    color: #ced7e4; }
+  /* line 63, static/scss/components/_form.scss */
+  .form .input.transparent,
+  .form .select.transparent {
+    color: transparent;
+    user-select: none; }
+    /* line 67, static/scss/components/_form.scss */
+    .form .input.transparent::placeholder,
+    .form .select.transparent::placeholder {
+      color: #ced7e4; }
+  /* line 72, static/scss/components/_form.scss */
+  .form .input.error,
+  .form .select.error {
+    border-color: #ff2115; }
+  /* line 76, static/scss/components/_form.scss */
+  .form .input.success,
+  .form .select.success {
+    border-color: #008000; }
+
+/* line 102, static/scss/components/_form.scss */
+.form .input.outline {
+  border-top: none; }
+  /* line 105, static/scss/components/_form.scss */
+  .form .input.outline ~ .label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    max-width: 312px;
+    display: flex;
+    font-size: 16px;
+    line-height: 16px;
+    transition: font-size 0.2s ease 0s;
+    padding: 0;
+    background-color: transparent;
+    pointer-events: none; }
+    /* line 120, static/scss/components/_form.scss */
+    .form .input.outline ~ .label::before, .form .input.outline ~ .label::after {
+      content: "";
+      border-top: 1px solid;
+      height: 8px; }
+    /* line 127, static/scss/components/_form.scss */
+    .form .input.outline ~ .label::before {
+      border-left: 1px solid;
+      border-top-left-radius: 8px;
+      border-color: #486284;
+      width: 11px; }
+    /* line 134, static/scss/components/_form.scss */
+    .form .input.outline ~ .label::after {
+      border-right: 1px solid;
+      border-top-right-radius: 8px;
+      border-color: #486284;
+      flex: 1; }
+    /* line 141, static/scss/components/_form.scss */
+    .form .input.outline ~ .label span {
+      position: absolute;
+      top: calc(56px / 2 - (16px / 2));
+      left: 16px;
+      transition: top 0.2s ease 0s; }
+  /* line 149, static/scss/components/_form.scss */
+  .form .input.outline:disabled:focus ~ .label, .form .input.outline:disabled:hover ~ .label {
+    font-size: 16px;
+    line-height: 16px; }
+    /* line 154, static/scss/components/_form.scss */
+    .form .input.outline:disabled:focus ~ .label span, .form .input.outline:disabled:hover ~ .label span {
+      position: absolute;
+      top: calc(56px / 2 - (16px / 2));
+      left: 16px;
+      transition: top 0.2s ease 0s; }
+  /* line 162, static/scss/components/_form.scss */
+  .form .input.outline.active ~ .label, .form .input.outline:disabled.active ~ .label, .form .input.outline:focus ~ .label, .form .input.outline:hover ~ .label {
+    font-size: 14px;
+    line-height: 14px; }
+    /* line 169, static/scss/components/_form.scss */
+    .form .input.outline.active ~ .label span, .form .input.outline:disabled.active ~ .label span, .form .input.outline:focus ~ .label span, .form .input.outline:hover ~ .label span {
+      position: relative;
+      top: -8px;
+      left: 0px; }
+  /* line 176, static/scss/components/_form.scss */
+  .form .input.outline:disabled:hover ~ .label::before {
+    margin-right: 0px; }
+  /* line 180, static/scss/components/_form.scss */
+  .form .input.outline.active ~ .label::before, .form .input.outline:disabled.active ~ .label::before, .form .input.outline:hover ~ .label::before, .form .input.outline:focus ~ .label::before {
+    margin-right: 4px; }
+  /* line 187, static/scss/components/_form.scss */
+  .form .input.outline:disabled:hover ~ .label::after {
+    margin-left: 0px; }
+  /* line 191, static/scss/components/_form.scss */
+  .form .input.outline.active ~ .label::after, .form .input.outline:disabled.active ~ .label::after, .form .input.outline:hover ~ .label::after, .form .input.outline:focus ~ .label::after {
+    margin-left: 4px; }
+  /* line 198, static/scss/components/_form.scss */
+  .form .input.outline:disabled ~ .label {
+    opacity: 0.4; }
+  /* line 204, static/scss/components/_form.scss */
+  .form .input.outline.error ~ .label::before,
+  .form .input.outline.error ~ .label::after {
+    border-color: #ff2115; }
+  /* line 212, static/scss/components/_form.scss */
+  .form .input.outline.success ~ .label::before,
+  .form .input.outline.success ~ .label::after {
+    border-color: #008000; }
+
+/* line 219, static/scss/components/_form.scss */
+.form .input.filled {
+  padding: 24px 16px 8px; }
+  /* line 222, static/scss/components/_form.scss */
+  .form .input.filled ~ .label {
+    margin-bottom: 0;
+    position: absolute;
+    top: calc(56px / 2 - (16px / 2));
+    left: 16px;
+    transition: 0.2s ease 0s;
+    width: 100%;
+    max-width: 312px;
+    display: flex;
+    font-size: 16px;
+    line-height: 16px;
+    background-color: transparent;
+    pointer-events: none; }
+  /* line 237, static/scss/components/_form.scss */
+  .form .input.filled:disabled ~ .label {
+    opacity: 0.4; }
+  /* line 241, static/scss/components/_form.scss */
+  .form .input.filled:disabled:hover ~ .label {
+    top: calc(56px / 2 - (16px / 2));
+    font-size: 16px; }
+  /* line 246, static/scss/components/_form.scss */
+  .form .input.filled.active ~ .label, .form .input.filled:disabled.active ~ .label, .form .input.filled:focus ~ .label, .form .input.filled:hover ~ .label {
+    font-size: 14px;
+    top: 8px; }
+
+/* line 255, static/scss/components/_form.scss */
+.form .helper-text {
+  display: block;
+  font-size: 0.75rem;
+  padding: 2px 12px 0px; }
+  /* line 260, static/scss/components/_form.scss */
+  .form .helper-text.error {
+    color: #ff2115; }
+  /* line 264, static/scss/components/_form.scss */
+  .form .helper-text.success {
+    color: #008000; }
+
+/* line 269, static/scss/components/_form.scss */
+.form .input-container {
+  position: relative; }
+  /* line 272, static/scss/components/_form.scss */
+  .form .input-container .right-element {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 16px;
+    margin: auto;
+    height: min-content; }
+    /* line 280, static/scss/components/_form.scss */
+    .form .input-container .right-element p {
+      background-color: #1a1a1a;
+      color: #f1f1f1;
+      padding: 4px; }
+  /* line 287, static/scss/components/_form.scss */
+  .form .input-container input[name^="right"] {
+    padding-right: 64px; }
+
+/* line 292, static/scss/components/_form.scss */
+.form .select {
+  appearance: none;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+  /* For IE10 */
+  cursor: pointer;
+  background-image: url("/static/img/select-arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: calc(100% - $padding) center; }
+  /* line 300, static/scss/components/_form.scss */
+  .form .select::-ms-expand {
+    display: none; }
+  /* line 310, static/scss/components/_form.scss */
+  .form .select option:first-child {
+    display: none; }
+
+/* line 315, static/scss/components/_form.scss */
+.form textarea.input {
+  resize: vertical;
+  min-height: 112px; }
+
+/* line 1, static/scss/components/_checkbox.scss */
+.check {
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+  /* line 8, static/scss/components/_checkbox.scss */
+  .check .marker {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid #486284;
+    margin-right: 10px; }
+    /* line 17, static/scss/components/_checkbox.scss */
+    .check .marker::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      left: 0px;
+      bottom: 0px;
+      margin: auto;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      transform: scale(0);
+      transition: 0.2s ease-in-out;
+      background-color: #486284; }
+  /* line 35, static/scss/components/_checkbox.scss */
+  .check.radio .marker {
+    border-radius: 16px; }
+    /* line 38, static/scss/components/_checkbox.scss */
+    .check.radio .marker::before {
+      border-radius: 16px; }
+  /* line 44, static/scss/components/_checkbox.scss */
+  .check input {
+    display: none; }
+    /* line 47, static/scss/components/_checkbox.scss */
+    .check input:checked ~ .marker::before {
+      transform: scale(1); }
+    /* line 51, static/scss/components/_checkbox.scss */
+    .check input:disabled ~ .marker, .check input:disabled ~ .text {
+      opacity: 0.6;
+      cursor: not-allowed; }
+  /* line 58, static/scss/components/_checkbox.scss */
+  .check .text {
+    line-height: 14px;
+    user-select: none; }
+
+/* line 1, static/scss/components/_accordion.scss */
+.accordion {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.2s ease 0s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  background-color: transparent; }
+  /* line 13, static/scss/components/_accordion.scss */
+  .accordion.primary {
+    margin-bottom: 10px;
+    border: 2px solid #486284; }
+    /* line 17, static/scss/components/_accordion.scss */
+    .accordion.primary:last-child {
+      margin-bottom: 0px; }
+  /* line 21, static/scss/components/_accordion.scss */
+  .accordion.secondary {
+    border: none;
+    border-bottom: 1px solid #486284; }
+    /* line 25, static/scss/components/_accordion.scss */
+    .accordion.secondary:last-child {
+      border-bottom: none; }
+  /* line 30, static/scss/components/_accordion.scss */
+  .accordion .label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    transition: 0.2s ease 0s; }
+    /* line 37, static/scss/components/_accordion.scss */
+    .accordion .label h3 {
+      transition: 0.2s ease 0s; }
+    /* line 41, static/scss/components/_accordion.scss */
+    .accordion .label .arrow {
+      width: 18px;
+      height: 18px;
+      margin-left: 20px;
+      background-image: url("/static/img/arrow.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      transition: 0.2s ease 0s; }
+  /* line 52, static/scss/components/_accordion.scss */
+  .accordion.active .label h3, .accordion:focus .label h3, .accordion:hover .label h3 {
+    color: #486284; }
+  /* line 58, static/scss/components/_accordion.scss */
+  .accordion.active .arrow {
+    transform: rotate(-180deg); }
+  /* line 62, static/scss/components/_accordion.scss */
+  .accordion .content {
+    height: 0;
+    overflow: hidden; }
+    /* line 66, static/scss/components/_accordion.scss */
+    .accordion .content > div {
+      padding: 0 20px 20px; }
+  /* line 71, static/scss/components/_accordion.scss */
+  .accordion.active .content {
+    height: auto;
+    animation: accordion-anima 0.4s forwards; }
+
+@keyframes accordion-anima {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); }
+  to {
+    opacity: 1;
+    transform: translateY(0px); } }
+
+/* line 3, static/scss/components/title-subtitle/_primary.scss */
+.title-subtitle.primary .title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px; }
+
+/* line 8, static/scss/components/title-subtitle/_primary.scss */
+.title-subtitle.primary .subtitle {
+  font-style: 18px;
+  margin-bottom: 16px; }
+
+/* line 2, static/scss/components/title-subtitle/_secondary.scss */
+.title-subtitle.secondary {
+  text-align: center; }
+  /* line 5, static/scss/components/title-subtitle/_secondary.scss */
+  .title-subtitle.secondary .title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px; }
+  /* line 10, static/scss/components/title-subtitle/_secondary.scss */
+  .title-subtitle.secondary .subtitle {
+    font-style: 18px;
+    margin-bottom: 16px; }
+
+/* line 1, static/scss/components/price/_primary.scss */
+.price.primary {
+  display: flex; }
+  /* line 6, static/scss/components/price/_primary.scss */
+  .price.primary .left span,
+  .price.primary .right span {
+    display: block; }
+  /* line 11, static/scss/components/price/_primary.scss */
+  .price.primary .left {
+    font-size: 0.875rem; }
+  /* line 14, static/scss/components/price/_primary.scss */
+  .price.primary strong {
+    font-size: 32px;
+    height: 32px;
+    margin: 0px 3px; }
+  /* line 19, static/scss/components/price/_primary.scss */
+  .price.primary .right {
+    font-size: 0.875rem; }
+
+/* line 1, static/scss/components/price/_secondary.scss */
+.price.secondary {
+  display: flex; }
+  /* line 6, static/scss/components/price/_secondary.scss */
+  .price.secondary .left span,
+  .price.secondary .right span {
+    display: block; }
+  /* line 11, static/scss/components/price/_secondary.scss */
+  .price.secondary .left {
+    font-size: 0.875rem; }
+  /* line 14, static/scss/components/price/_secondary.scss */
+  .price.secondary strong {
+    font-size: 32px;
+    height: 32px;
+    margin: 0px 3px; }
+  /* line 19, static/scss/components/price/_secondary.scss */
+  .price.secondary .right {
+    font-size: 0.875rem; }
+  /* line 23, static/scss/components/price/_secondary.scss */
+  .price.secondary + small {
+    font-size: 14px; }
+
+/* line 1, static/scss/components/price/_tertiary.scss */
+.price.tertiary {
+  display: flex;
+  align-items: center; }
+  /* line 5, static/scss/components/price/_tertiary.scss */
+  .price.tertiary .left,
+  .price.tertiary .right {
+    padding-top: 6px; }
+  /* line 10, static/scss/components/price/_tertiary.scss */
+  .price.tertiary .left {
+    font-size: 0.875rem; }
+  /* line 13, static/scss/components/price/_tertiary.scss */
+  .price.tertiary strong {
+    font-size: 32px;
+    height: 32px;
+    margin: 0px 3px; }
+  /* line 18, static/scss/components/price/_tertiary.scss */
+  .price.tertiary .right {
+    font-size: 0.875rem; }
+
+/* line 1, static/scss/components/_list.scss */
+.list.primary {
+  padding-left: 20px; }
+  /* line 4, static/scss/components/_list.scss */
+  .list.primary li {
+    list-style: disc outside;
+    margin-bottom: 16px; }
+    /* line 8, static/scss/components/_list.scss */
+    .list.primary li:last-child {
+      margin-bottom: 0px; }
+
+/* line 15, static/scss/components/_list.scss */
+.list.secondary li {
+  padding-left: 24px;
+  margin-bottom: 16px;
+  background-image: url("/static/img/check.svg");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 0px 2px; }
+  /* line 24, static/scss/components/_list.scss */
+  .list.secondary li:last-child {
+    margin-bottom: 0px; }
+
+/* line 30, static/scss/components/_list.scss */
+.list.tertiary {
+  padding-left: 20px; }
+  /* line 33, static/scss/components/_list.scss */
+  .list.tertiary li {
+    list-style: decimal outside;
+    margin-bottom: 16px; }
+    /* line 37, static/scss/components/_list.scss */
+    .list.tertiary li:last-child {
+      margin-bottom: 0px; }
+
+/* line 43, static/scss/components/_list.scss */
+.list.quarternary {
+  padding-left: 20px; }
+  /* line 46, static/scss/components/_list.scss */
+  .list.quarternary li {
+    list-style: upper-alpha outside;
+    margin-bottom: 16px; }
+    /* line 50, static/scss/components/_list.scss */
+    .list.quarternary li:last-child {
+      margin-bottom: 0px; }
+
+/* line 1, static/scss/layout/header/_primary.scss */
+.header {
+  position: relative;
+  background-color: #fafafa;
+  box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.32); }
+  /* line 6, static/scss/layout/header/_primary.scss */
+  .header .container {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  /* line 11, static/scss/layout/header/_primary.scss */
+  .header .logo {
+    font-size: 1.75rem;
+    color: #486284; }
+  /* line 16, static/scss/layout/header/_primary.scss */
+  .header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; }
+    /* line 20, static/scss/layout/header/_primary.scss */
+    .header nav .link {
+      color: #486284; }
+  /* line 24, static/scss/layout/header/_primary.scss */
+  .header .menu-button {
+    display: none;
+    font-size: 0px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-image: url("/static/img/menu.svg?ab1c62fa38d6");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+
+@media (max-width: 768px) {
+  /* line 35, static/scss/layout/header/_primary.scss */
+  .header nav {
+    display: none; }
+  /* line 38, static/scss/layout/header/_primary.scss */
+  .header .menu-button {
+    display: block; } }
+
+/* line 1, static/scss/layout/footer/_primary.scss */
+.footer {
+  background-color: #486284; }
+  /* line 4, static/scss/layout/footer/_primary.scss */
+  .footer .container {
+    padding: 20px 0px; }
+  /* line 7, static/scss/layout/footer/_primary.scss */
+  .footer p {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #fafafa; }
+
+@media (max-width: 768px) {
+  /* line 16, static/scss/layout/footer/_primary.scss */
+  .footer .container {
+    padding: 14px 0px; }
+  /* line 19, static/scss/layout/footer/_primary.scss */
+  .footer p {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #fafafa; } }
+
+/* line 1, static/scss/layout/banner/_primary.scss */
+.primary-banner {
+  background-color: #fafafa;
+  box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.32); }
+  /* line 5, static/scss/layout/banner/_primary.scss */
+  .primary-banner .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 610px; }
+  /* line 11, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left,
+  .primary-banner .right {
+    width: 50%; }
+  /* line 17, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left h2 {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #486284;
+    margin-bottom: 1rem; }
+  /* line 24, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left p {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #8ca2c0;
+    margin-bottom: 1.5rem; }
+  /* line 32, static/scss/layout/banner/_primary.scss */
+  .primary-banner .right img {
+    width: 100%; }
+
+@media (max-width: 1280px) {
+  /* line 40, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left h2 {
+    font-size: 3rem; } }
+
+@media (max-width: 1024px) {
+  /* line 49, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left h2 {
+    font-size: 2.5rem; } }
+
+@media (max-width: 768px) {
+  /* line 57, static/scss/layout/banner/_primary.scss */
+  .primary-banner .container {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 3rem; }
+  /* line 64, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left,
+  .primary-banner .right {
+    width: 100%;
+    max-width: 342px;
+    margin: 0px auto; }
+  /* line 71, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left h2 {
+    font-weight: 500;
+    font-size: 2rem; }
+  /* line 75, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left .gn-button {
+    width: 100%; }
+  /* line 79, static/scss/layout/banner/_primary.scss */
+  .primary-banner .left p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem; } }
+
+/* line 1, static/scss/layout/banner/_secondary.scss */
+.secondary-banner {
+  background-color: #fafafa; }
+  /* line 4, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 610px; }
+  /* line 10, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .left,
+  .secondary-banner .right {
+    width: 50%; }
+  /* line 16, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .left img {
+    width: 100%; }
+  /* line 21, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .right h2 {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #486284;
+    margin-bottom: 1rem; }
+  /* line 28, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .right p {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #8ca2c0;
+    margin-bottom: 1.5rem; }
+
+@media (max-width: 1280px) {
+  /* line 39, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .right h2 {
+    font-size: 3rem; } }
+
+@media (max-width: 1024px) {
+  /* line 48, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .right h2 {
+    font-size: 2.5rem; } }
+
+@media (max-width: 768px) {
+  /* line 56, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .container {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 3rem; }
+  /* line 63, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .left,
+  .secondary-banner .right {
+    width: 100%;
+    max-width: 342px;
+    margin: 0px auto; }
+  /* line 70, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .right h2 {
+    font-weight: 500;
+    font-size: 2rem; }
+  /* line 74, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .right .gn-button {
+    width: 100%; }
+  /* line 78, static/scss/layout/banner/_secondary.scss */
+  .secondary-banner .right p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem; } }
+
+/* line 1, static/scss/layout/banner/_tertiary.scss */
+.tertiary-banner {
+  background-color: #fafafa; }
+  /* line 4, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 570px;
+    min-height: 610px;
+    text-align: center; }
+  /* line 11, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner img {
+    width: 100%;
+    max-width: 312px;
+    height: auto;
+    margin-bottom: 1rem; }
+  /* line 17, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner h2 {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #486284;
+    margin-bottom: 1rem; }
+  /* line 24, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner p {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #8ca2c0;
+    margin-bottom: 1.5rem; }
+  /* line 31, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; }
+
+@media (max-width: 768px) {
+  /* line 38, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner .container {
+    align-items: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 3rem; }
+  /* line 43, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner h2 {
+    font-weight: 500;
+    font-size: 2rem; }
+  /* line 47, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem; }
+  /* line 51, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner .gn-button {
+    width: 100%; }
+  /* line 54, static/scss/layout/banner/_tertiary.scss */
+  .tertiary-banner .buttons {
+    flex-direction: column; } }
+
+/* line 1, static/scss/layout/section/_primary.scss */
+.section.primary {
+  background-color: #fafafa; }
+  /* line 4, static/scss/layout/section/_primary.scss */
+  .section.primary .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 610px;
+    box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.32); }
+  /* line 11, static/scss/layout/section/_primary.scss */
+  .section.primary .left,
+  .section.primary .right {
+    width: 100%;
+    max-width: 400px; }
+  /* line 17, static/scss/layout/section/_primary.scss */
+  .section.primary .left h2 {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #486284;
+    margin-bottom: 1rem; }
+  /* line 24, static/scss/layout/section/_primary.scss */
+  .section.primary .left p {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #8ca2c0;
+    margin-bottom: 1.5rem; }
+  /* line 33, static/scss/layout/section/_primary.scss */
+  .section.primary .right img {
+    width: 100%; }
+
+@media (max-width: 1280px) {
+  /* line 42, static/scss/layout/section/_primary.scss */
+  .section.primary .left h2 {
+    font-size: 3rem; } }
+
+@media (max-width: 1024px) {
+  /* line 52, static/scss/layout/section/_primary.scss */
+  .section.primary .left h2 {
+    font-size: 2.5rem; } }
+
+@media (max-width: 768px) {
+  /* line 61, static/scss/layout/section/_primary.scss */
+  .section.primary .container {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 3rem; }
+  /* line 68, static/scss/layout/section/_primary.scss */
+  .section.primary .left,
+  .section.primary .right {
+    width: 100%;
+    max-width: 342px;
+    margin: 0px auto; }
+  /* line 75, static/scss/layout/section/_primary.scss */
+  .section.primary .left h2 {
+    font-weight: 500;
+    font-size: 2rem; }
+  /* line 80, static/scss/layout/section/_primary.scss */
+  .section.primary .left .gn-button {
+    width: 100%; }
+  /* line 84, static/scss/layout/section/_primary.scss */
+  .section.primary .left p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem; } }
+
+/* line 1, static/scss/layout/section/_secondary.scss */
+.section.secondary {
+  background-color: #fafafa; }
+  /* line 4, static/scss/layout/section/_secondary.scss */
+  .section.secondary .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 610px; }
+  /* line 10, static/scss/layout/section/_secondary.scss */
+  .section.secondary .left,
+  .section.secondary .right {
+    width: 100%;
+    max-width: 400px; }
+  /* line 16, static/scss/layout/section/_secondary.scss */
+  .section.secondary .right h2 {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #486284;
+    margin-bottom: 1rem; }
+  /* line 23, static/scss/layout/section/_secondary.scss */
+  .section.secondary .right p {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #8ca2c0;
+    margin-bottom: 1.5rem; }
+  /* line 32, static/scss/layout/section/_secondary.scss */
+  .section.secondary .left img {
+    width: 100%; }
+
+@media (max-width: 1280px) {
+  /* line 41, static/scss/layout/section/_secondary.scss */
+  .section.secondary .right h2 {
+    font-size: 3rem; } }
+
+@media (max-width: 1024px) {
+  /* line 51, static/scss/layout/section/_secondary.scss */
+  .section.secondary .right h2 {
+    font-size: 2.5rem; } }
+
+@media (max-width: 768px) {
+  /* line 60, static/scss/layout/section/_secondary.scss */
+  .section.secondary .container {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 3rem; }
+  /* line 67, static/scss/layout/section/_secondary.scss */
+  .section.secondary .left,
+  .section.secondary .right {
+    width: 100%;
+    max-width: 342px;
+    margin: 0px auto; }
+  /* line 74, static/scss/layout/section/_secondary.scss */
+  .section.secondary .right h2 {
+    font-weight: 500;
+    font-size: 2rem; }
+  /* line 79, static/scss/layout/section/_secondary.scss */
+  .section.secondary .right .gn-button {
+    width: 100%; }
+  /* line 83, static/scss/layout/section/_secondary.scss */
+  .section.secondary .right p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem; } }
+
+/* line 1, static/scss/layout/menu/_primary.scss */
+.menu {
+  position: fixed;
+  top: 0px;
+  right: -320px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+  background-color: #fafafa;
+  box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.32);
+  transition: right 0.2s ease 0s; }
+  /* line 12, static/scss/layout/menu/_primary.scss */
+  .menu .menu-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 0px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-image: url("/static/img/close.svg?47fee4ad5c46");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+  /* line 23, static/scss/layout/menu/_primary.scss */
+  .menu nav .link {
+    display: block;
+    width: fit-content;
+    color: #486284;
+    margin-bottom: 1rem; }
+    /* line 29, static/scss/layout/menu/_primary.scss */
+    .menu nav .link:last-child {
+      margin-bottom: 0; }
+  /* line 35, static/scss/layout/menu/_primary.scss */
+  .menu.active {
+    right: 0; }
+
+/* line 1, static/scss/layout/modal/_primary.scss */
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease 0s;
+  background-color: #00000099; }
+  /* line 8, static/scss/layout/modal/_primary.scss */
+  .modal.active {
+    opacity: 1;
+    pointer-events: all; }
+  /* line 12, static/scss/layout/modal/_primary.scss */
+  .modal.primary {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    /* line 15, static/scss/layout/modal/_primary.scss */
+    .modal.primary .modal-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      max-width: 352px;
+      min-height: 312px;
+      max-height: 400px;
+      padding: 20px;
+      margin: 16px;
+      border-radius: 16px;
+      background-color: #fafafa;
+      text-align: center; }
+      /* line 28, static/scss/layout/modal/_primary.scss */
+      .modal.primary .modal-content h2 {
+        margin-bottom: 16px; }
+    /* line 33, static/scss/layout/modal/_primary.scss */
+    .modal.primary .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #00000000;
+      background-image: url("/static/img/close.svg?47fee4ad5c46");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+      /* line 45, static/scss/layout/modal/_primary.scss */
+      .modal.primary .close:hover, .modal.primary .close:focus {
+        opacity: 0.6;
+        transition: 0.2s ease 0s; }
+  /* line 54, static/scss/layout/modal/_primary.scss */
+  .modal.secondary .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    margin-right: -100%;
+    margin-left: auto;
+    height: 100vh;
+    padding: 20px;
+    background-color: #fafafa;
+    transition: margin-right 0.2s ease 0s; }
+  /* line 67, static/scss/layout/modal/_primary.scss */
+  .modal.secondary.active .modal-content {
+    margin-right: 0px; }
+  /* line 73, static/scss/layout/modal/_primary.scss */
+  .modal.secondary .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; }
+    /* line 77, static/scss/layout/modal/_primary.scss */
+    .modal.secondary .modal-header .close {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #00000000;
+      background-image: url("/static/img/close.svg?47fee4ad5c46");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+      /* line 84, static/scss/layout/modal/_primary.scss */
+      .modal.secondary .modal-header .close:hover, .modal.secondary .modal-header .close:focus {
+        opacity: 0.6;
+        transition: 0.2s ease 0s; }
+  /* line 92, static/scss/layout/modal/_primary.scss */
+  .modal.secondary .modal-body {
+    overflow-y: auto;
+    margin-bottom: 20px; }
