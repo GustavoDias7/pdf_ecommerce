@@ -44,8 +44,8 @@
     transition: border $primary-transition;
     background-color: transparent;
 
-    &:focus~.label,
-    &:hover~.label {
+    &:focus ~ .label,
+    &:hover ~ .label {
       top: -(#{$fontSize}px / 2);
     }
 
@@ -102,7 +102,7 @@
   .input.outline {
     border-top: none;
 
-    &~.label {
+    & ~ .label {
       position: absolute;
       top: 0px;
       left: 0px;
@@ -146,8 +146,8 @@
       }
     }
 
-    &:disabled:focus~.label,
-    &:disabled:hover~.label {
+    &:disabled:focus ~ .label,
+    &:disabled:hover ~ .label {
       font-size: #{$fontSize}px;
       line-height: #{$fontSize}px;
 
@@ -159,10 +159,10 @@
       }
     }
 
-    &.active~.label,
-    &:disabled.active~.label,
-    &:focus~.label,
-    &:hover~.label {
+    &.active ~ .label,
+    &:disabled.active ~ .label,
+    &:focus ~ .label,
+    &:hover ~ .label {
       font-size: #{$fontSize - 2}px;
       line-height: #{$fontSize - 2}px;
 
@@ -173,44 +173,42 @@
       }
     }
 
-    &:disabled:hover~.label::before {
+    &:disabled:hover ~ .label::before {
       margin-right: 0px;
     }
 
-    &.active~.label::before,
-    &:disabled.active~.label::before,
-    &:hover~.label::before,
-    &:focus~.label::before {
+    &.active ~ .label::before,
+    &:disabled.active ~ .label::before,
+    &:hover ~ .label::before,
+    &:focus ~ .label::before {
       margin-right: $margin;
     }
 
-    &:disabled:hover~.label::after {
+    &:disabled:hover ~ .label::after {
       margin-left: 0px;
     }
 
-    &.active~.label::after,
-    &:disabled.active~.label::after,
-    &:hover~.label::after,
-    &:focus~.label::after {
+    &.active ~ .label::after,
+    &:disabled.active ~ .label::after,
+    &:hover ~ .label::after,
+    &:focus ~ .label::after {
       margin-left: $margin;
     }
 
-    &:disabled~.label {
+    &:disabled ~ .label {
       opacity: 0.4;
     }
 
     &.error {
-
-      ~.label::before,
-      ~.label::after {
+      ~ .label::before,
+      ~ .label::after {
         border-color: $error-color-100;
       }
     }
 
     &.success {
-
-      ~.label::before,
-      ~.label::after {
+      ~ .label::before,
+      ~ .label::after {
         border-color: $success-color-100;
       }
     }
@@ -219,7 +217,7 @@
   .input.filled {
     padding: 24px 16px 8px;
 
-    &~.label {
+    & ~ .label {
       margin-bottom: 0;
       position: absolute;
       top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
@@ -234,19 +232,19 @@
       pointer-events: none;
     }
 
-    &:disabled~.label {
+    &:disabled ~ .label {
       opacity: 0.4;
     }
 
-    &:disabled:hover~.label {
+    &:disabled:hover ~ .label {
       top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
       font-size: #{$fontSize}px;
     }
 
-    &.active~.label,
-    &:disabled.active~.label,
-    &:focus~.label,
-    &:hover~.label {
+    &.active ~ .label,
+    &:disabled.active ~ .label,
+    &:focus ~ .label,
+    &:hover ~ .label {
       font-size: #{$fontSize - 2}px;
       top: 8px;
     }
@@ -264,6 +262,9 @@
     &.success {
       color: $success-color-100;
     }
+    &.center {
+      text-align: center;
+    }
   }
 
   .input-container {
@@ -277,10 +278,10 @@
       margin: auto;
       height: min-content;
 
-      p {
-        background-color: #1a1a1a;
-        color: #f1f1f1;
-        padding: 4px;
+      .gn-button {
+        height: 32px;
+        padding: 0px 12px;
+        font-size: 12px;
       }
     }
 
@@ -315,5 +316,19 @@
   textarea.input {
     resize: vertical;
     min-height: $inputHeight * 2;
+  }
+}
+
+.form-container {
+  @include flex-center-center;
+  padding: 32px 0;
+  min-height: calc(100vh - 128px);
+
+  .form {
+    @include max-width(312px);
+
+    .form-title {
+      font-size: 2rem;
+    }
   }
 }

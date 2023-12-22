@@ -13,12 +13,12 @@
 }
 @include md {
   .footer {
-    .container {
-      padding: 14px 0px;
-    }
+    // .container {
+    //   padding: 14px 0px;
+    // }
     p {
       font-size: 14px;
-      line-height: 20px;
+      // line-height: 20px;
       text-align: center;
       color: $neutral-color-100;
     }

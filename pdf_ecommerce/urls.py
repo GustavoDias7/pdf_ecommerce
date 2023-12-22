@@ -9,6 +9,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
     path("product/<int:id>", views.product, name="prodcut"),
+    path("signin/", views.signin, name="signin"),
+    path("signup/", views.signup, name="signup"),
+    path("profile/", views.profile, name="profile"),
 ]
 # Serving the media files in development mode
 if settings.DEBUG:

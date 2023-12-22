@@ -1,9 +1,16 @@
 <aside class="menu" :class="{active: modal.menu}">
   <button @click="closeModal('menu')" class="menu-button">Close menu</button>
   <nav>
-    <a class="link" href="/">Home</a>
     <a class="link" href="/">About</a>
     <a class="link" href="/">Contact</a>
-    <a class="gn-button pm-button" href="/">Buy now</a>
+
+    {% if user.is_authenticated %}
+    <a class="link" href="/profile">Hi, {{user.username}}!</a>
+    {% else %}
+    <div class="buttons">
+      <a class="gn-button sc-button" href="/signin">Sign in</a>
+      <a class="gn-button pm-button" href="/signup">Sign up</a>
+    </div>
+    {% endif %}
   </nav>
 </aside>

@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="form-container">
+    <form action="/signin/" method="post" class="form">
+      {% csrf_token %}
+
+      <div class="row">
+        <h2 class="form-title">Sign in</h2>
+      </div>
+
+      <div class="row">
+        <input
+          v-model="fields.email"
+          id="email"
+          name="email"
+          type="text"
+          class="input filled"
+          :class="active('email')"
+          value="{{login_form.email.value}}"
+        />
+        <label for="email" class="label">E-mail</label>
+        {% if errors.email %}
+        <p class="helper-text error">{{errors.email.as_text}}</p>
+        {% endif %}
+      </div>
+
+      <div class="row">
+        <input
+          v-model="fields.password"
+          id="password"
+          name="password"
+          class="input filled"
+          :class="active('password')"
+          :type="passwords.main ? 'text' : 'password'"
+        />
+        <label for="password" class="label">Password</label>
+        {% if errors.password %}
+        <p class="helper-text error">{{errors.password.as_text}}</p>
+        {% endif %}
+      </div>
+
+      <div class="row">
+        <p class="helper-text error center">{{login_error}}</p>
+      </div>
+
+      <div class="row">
+        <button class="gn-button pm-button full">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

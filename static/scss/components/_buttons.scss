@@ -11,20 +11,31 @@
   outline: none;
   background-color: $neutral-color-100;
   transition: all 0.2s ease 0s;
-}
-.gn-button:focus,
-.gn-button:hover {
-  opacity: 0.8;
-}
-.gn-button:disabled {
-  opacity: 0.5;
-  cursor: wait;
+
+  &:focus,
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.full {
+    width: 100%;
+  }
+
+  &.center {
+    margin: 0px auto;
+  }
 }
 
 .pm-button {
   background-color: $primary-color-500;
   color: $neutral-color-100;
 }
+
 .sc-button {
   background-color: transparent;
   border: $primary-border;

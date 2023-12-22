@@ -5,10 +5,14 @@
     </div>
     <div class="right">
       <nav>
-        <a class="link" href="/">Home</a>
         <a class="link" href="/">About</a>
         <a class="link" href="/">Contact</a>
-        <a class="gn-button pm-button" href="/">Sign up</a>
+        {% if user.is_authenticated %}
+        <a class="link" href="/profile">Hi, {{user.username}}!</a>
+        {% else %}
+        <a class="gn-button sc-button" href="/signin">Sign in</a>
+        <a class="gn-button pm-button" href="/signup">Sign up</a>
+        {% endif %}
       </nav>
       <button @click="openModal('menu')" class="menu-button">Open menu</button>
     </div>
