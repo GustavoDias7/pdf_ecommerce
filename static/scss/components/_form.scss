@@ -306,7 +306,7 @@
     background-image: url(pathImages("select-arrow.svg"));
     background-repeat: no-repeat;
     background-size: 10px;
-    background-position: calc(100% - $padding) center;
+    background-position: calc(100% - #{$padding}) center;
 
     option:first-child {
       display: none;
