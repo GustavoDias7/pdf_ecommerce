@@ -22,6 +22,8 @@
 
   nav {
     .link {
+      font-size: 16px;
+      line-height: 24px;
       display: block;
       width: fit-content;
       color: $primary-color-500;
@@ -30,6 +32,10 @@
       &:last-child {
         margin-bottom: 0;
       }
+    }
+
+    button.link {
+      @include reset-button;
     }
     .buttons {
       @include flex-align-center;

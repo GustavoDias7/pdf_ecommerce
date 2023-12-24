@@ -11,6 +11,7 @@ urlpatterns = [
     path("product/<int:id>", views.product, name="prodcut"),
     path("signin/", views.signin, name="signin"),
     path("signup/", views.signup, name="signup"),
+    path("logout/", views.logout_view, name="logout"),
     path("profile/", views.profile, name="profile"),
 ]
 # Serving the media files in development mode

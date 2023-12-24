@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Product, User
+from .models import Product
 from .forms import UserForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.password_validation import validate_password
 
@@ -74,6 +74,11 @@ def signup(request):
             return render(request, "pages/signup.html", context)
 
     return render(request, "pages/signup.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")
 
 
 @login_required

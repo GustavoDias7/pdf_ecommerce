@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Default title{% endblock %}
+    </title>
+    {% load static %}
+    {% load compress %}
+    {% compress css %}
+        {% block scss %}
+            <link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
+        {% endblock %}
+    {% endcompress %}
+</head>
+<body>
+    <div class="{% block app_section %}{% endblock %}" id="app">
+        {% include "components/header.html" %}
+        {% include "components/menu.html" %}
+        
+        {% block content %}{% endblock %}
+
+        {% include "components/footer.html" %}
+        {% include "components/modals/logout.html" %}
+    </div>
+    {% block vue %}
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    {% endblock %}
+    {% block js %}
+        <script src="{% static "js/homepage.js" %}"></script>
+    {% endblock %}
+</body>
+</html>
+

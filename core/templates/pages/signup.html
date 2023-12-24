@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    {% load static %}
-    {% load compress %}
-    {% compress css %}
-        <link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
-    {% endcompress %}
-</head>
-<body>
-    <div id="app">
-        {% include "components/header.html" %}
-        {% include "components/menu.html" %}
-        {% include "components/signup_form.html" %}
-        {% include "components/footer.html" %}
-    </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="{% static "js/signup.js" %}"></script>
-</body>
-</html>
+{% extends './base.html' %}
 
+{% block title %}
+  Signup Page
+{% endblock %}
+
+{% block scss %}
+{% load static %}
+<link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    {% include "components/signup_form.html" %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/signup.js" %}"></script>
+{% endblock %}

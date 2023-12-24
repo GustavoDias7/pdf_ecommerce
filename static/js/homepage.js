@@ -5,7 +5,8 @@ createApp({
     data() {
         return { 
             modal: {
-                menu: false
+                menu: false,
+                logout: false
             } 
         }
     },
@@ -16,5 +17,12 @@ createApp({
         closeModal(name = "") {
             this.modal[name] = false
         },
+        openLogout() {
+            this.closeModal("menu")
+            this.modal.logout = true
+        },
+        closeLogout() {
+            this.modal.logout = false
+        }
     },
 }).mount('#app')

@@ -11,7 +11,8 @@ createApp({
                 confirm_password: "",
             },
             modal: {
-                menu: false
+                menu: false,
+                logout: false
             },
             passwords: {
                 main: false,
@@ -31,6 +32,13 @@ createApp({
         },
         active(field = "") {
             return {active: this.fields[field] != ""}
+        },
+        openLogout() {
+            this.closeModal("menu")
+            this.modal.logout = true
+        },
+        closeLogout() {
+            this.modal.logout = false
         }
     },
 }).mount('#app')

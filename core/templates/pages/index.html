@@ -1,31 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    {% load static %}
-    {% load compress %}
-    {% compress css %}
-        <link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
-    {% endcompress %}
-</head>
-<body>
-    <div id="app">
-        {% include "components/header.html" %}
-        {% include "components/menu.html" %}
-        {% include "components/banner/primary.html" %}
-        {% for product in products %}
-            {% if not forloop.counter|divisibleby:2 %}
-                {% include "components/section/primary.html" %}
-            {% else %}
-                {% include "components/section/secondary.html" %}
-            {% endif %}
-        {% endfor %}
-        {% include "components/footer.html" %}
-    </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="{% static "js/homepage.js" %}"></script>
-</body>
-</html>
+{% extends './base.html' %}
 
+{% block title %}
+  Home Page
+{% endblock %}
+
+{% block scss %}
+{% load static %}
+<link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+  {% include 'components/banner/primary.html' %}
+  {% for product in products %}
+    {% if not forloop.counter|divisibleby:2 %}
+      {% include 'components/section/primary.html' %}
+    {% else %}
+      {% include 'components/section/secondary.html' %}
+    {% endif %}
+  {% endfor %}
+{% endblock %}
