@@ -15,10 +15,11 @@
           type="text"
           class="input filled"
           :class="active('username')"
+          value="{{form.username.value}}"
         />
         <label for="username" class="label">Username</label>
-        {% if errors.username %}
-        <p class="helper-text error">{{errors.username.as_text}}</p>
+        {% if form.errors.username %}
+        <p class="helper-text error">{{form.errors.username.as_text}}</p>
         {% endif %}
       </div>
 
@@ -30,10 +31,11 @@
           type="text"
           class="input filled"
           :class="active('email')"
+          value="{{form.email.value}}"
         />
         <label for="email" class="label">E-mail</label>
-        {% if errors.email %}
-        <p class="helper-text error">{{errors.email.as_text}}</p>
+        {% if form.errors.email %}
+        <p class="helper-text error">{{form.errors.email.as_text}}</p>
         {% endif %}
       </div>
 
@@ -46,6 +48,7 @@
             class="input filled"
             :class="active('password')"
             :type="passwords.main ? 'text' : 'password'"
+            value="{{form.password.value}}"
           />
           <label for="password" class="label">Password</label>
           <div class="right-element">
@@ -57,8 +60,8 @@
             ></button>
           </div>
         </div>
-        {% if errors.password %}
-        <p class="helper-text error">{{errors.password.as_text}}</p>
+        {% if form.errors.password %}
+        <p class="helper-text error">{{form.errors.password.as_text}}</p>
         {% endif %}
       </div>
 
@@ -82,8 +85,10 @@
             ></button>
           </div>
         </div>
-        {% if errors.confirm_password %}
-        <p class="helper-text error">{{errors.confirm_password.as_text}}</p>
+        {% if form.errors.confirm_password %}
+        <p class="helper-text error">
+          {{form.errors.confirm_password.as_text}}
+        </p>
         {% endif %}
       </div>
 

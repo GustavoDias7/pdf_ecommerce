@@ -1,15 +1,21 @@
-const { createApp } = Vue
+const { createApp, onMounted } = Vue
+
+function getInputValue(field = "") {
+    return document.querySelector(`input#${field}`)?.value || ""
+}
+
+const fields = {
+    username: getInputValue("username"),
+    email: getInputValue("email"),
+    password: getInputValue("password"),
+    confirm_password: getInputValue("confirm_password"),
+}
 
 createApp({
     delimiters: ["[[", "]]"],
     data() {
         return {
-            fields: {
-                username: "",
-                email: "",
-                password: "",
-                confirm_password: "",
-            },
+            fields,
             modal: {
                 menu: false,
                 logout: false

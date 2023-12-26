@@ -15,32 +15,46 @@
           type="text"
           class="input filled"
           :class="active('email')"
-          value="{{login_form.email.value}}"
+          value="{{form.email.value}}"
         />
         <label for="email" class="label">E-mail</label>
-        {% if errors.email %}
-        <p class="helper-text error">{{errors.email.as_text}}</p>
+        {% if form.errors.email %}
+        <p class="helper-text error">{{form.errors.email.as_text}}</p>
         {% endif %}
       </div>
 
       <div class="row">
-        <input
-          v-model="fields.password"
-          id="password"
-          name="password"
-          class="input filled"
-          :class="active('password')"
-          :type="passwords.main ? 'text' : 'password'"
-        />
-        <label for="password" class="label">Password</label>
-        {% if errors.password %}
-        <p class="helper-text error">{{errors.password.as_text}}</p>
+        <div class="input-container">
+          <input
+            v-model="fields.password"
+            id="password"
+            name="password"
+            class="input filled"
+            :class="active('password')"
+            :type="passwords.main ? 'text' : 'password'"
+          />
+          <label for="password" class="label">Password</label>
+          <div class="right-element">
+            <button
+              type="button"
+              class="gn-button sc-button"
+              @click="togglePassword('main')"
+              v-text="passwords.main ? 'Hide' : 'Show'"
+            ></button>
+          </div>
+        </div>
+        {% if form.errors.password %}
+        <p class="helper-text error">{{form.errors.password.as_text}}</p>
         {% endif %}
       </div>
 
+      {% if form.non_field_errors %}
       <div class="row">
-        <p class="helper-text error center">{{login_error}}</p>
+        <p class="helper-text error center">
+          {{form.non_field_errors.as_text}}
+        </p>
       </div>
+      {% endif %}
 
       <div class="row">
         <button class="gn-button pm-button full">Login</button>
