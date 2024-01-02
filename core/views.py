@@ -8,15 +8,19 @@ from django.contrib.auth.password_validation import validate_password
 
 # Create your views here.
 def home(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(id__in=(1, 2, 3, 4))
     context = {"products": products}
     return render(request, "pages/index.html", context)
 
 
 # Create your views here.
 def product(request, id):
-    product = Product.objects.get(pk=id)
-    context = {"product": product}
+    try:
+        product = Product.objects.get(pk=id)
+        context = {"product": product}
+    except:
+        context = {"error": "Desculpe, o produto solicitado não existe."}
+
     return render(request, "pages/product.html", context)
 
 

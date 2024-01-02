@@ -10,5 +10,9 @@
 {% endblock %}
 
 {% block content %}
-    {% include "components/details.html" %}
+    {% if error %}
+      {% include "components/product_error.html" %}
+    {% else %}
+      {% include "components/details.html" %}
+    {% endif %}
 {% endblock %}

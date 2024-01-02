@@ -11,8 +11,13 @@
 
 body,
 html,
-#app {
+.app {
   min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
 }
 
 a {
