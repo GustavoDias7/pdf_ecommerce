@@ -1,0 +1,16 @@
+{% extends './base.html' %}
+
+{% block title %}
+  Account Page
+{% endblock %}
+
+{% block scss %}
+{% load static %}
+<link type="text/x-scss" href="{% static 'scss/page/account.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block app_section %} account{% endblock %}
+
+{% block content %}
+    {% include "components/account.html" %}
+{% endblock %}

@@ -12,7 +12,10 @@ urlpatterns = [
     path("signin/", views.signin, name="signin"),
     path("signup/", views.signup, name="signup"),
     path("logout/", views.logout_view, name="logout"),
-    path("profile/", views.profile, name="profile"),
+    path("account/", views.account, name="account"),
+    path("account/profile/", views.profile, name="profile"),
+    path("account/orders/", views.orders, name="orders"),
+    path("account/payment/", views.payment, name="payment"),
 ]
 # Serving the media files in development mode
 if settings.DEBUG:

@@ -36,7 +36,7 @@ def signin(request):
 
             if user is not None:
                 login(request, user)
-                return redirect("/profile/")
+                return redirect("profile")
             else:
                 login_form.add_error(None, "E-mail or password was incorrect.")
                 context = {"form": login_form}
@@ -77,7 +77,7 @@ def signup(request):
 
             if user is not None:
                 login(request, user)
-                return redirect("/profile/")
+                return redirect("profile")
         else:
             context = {"form": user_form}
             return render(request, "pages/signup.html", context)
@@ -87,9 +87,24 @@ def signup(request):
 
 def logout_view(request):
     logout(request)
-    return redirect("/signin/")
+    return redirect("signin")
 
 
 @login_required
 def profile(request):
     return render(request, "pages/profile.html")
+
+
+@login_required
+def account(request):
+    return render(request, "pages/account.html")
+
+
+@login_required
+def orders(request):
+    return render(request, "pages/orders.html")
+
+
+@login_required
+def payment(request):
+    return render(request, "pages/payment.html")

@@ -1,0 +1,57 @@
+{% load static %}
+<section class="section tertiary">
+  <div class="container">
+    <div class="g-root g-gap-3">
+      <div class="g-row g-center">
+        <div class="g-item-12">
+          <h2>Your Account</h2>
+        </div>
+        <div class="g-item-12 sm:g-item-6 md:g-item-4">
+          <div class="topics">
+            <a class="topic primary" href="{% url 'profile' %}">
+              <div class="left">
+                <div class="icon">
+                  <img src="{% static "img/user.svg" %}" alt="Icon" />
+                </div>
+              </div>
+              <div class="right">
+                <h3 class="title">Profile</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="g-item-12 sm:g-item-6 md:g-item-4">
+          <div class="topics">
+            <a class="topic primary" href="{% url 'orders' %}">
+              <div class="left">
+                <div class="icon">
+                  <img src="{% static "img/order.svg" %}" alt="Icon" />
+                </div>
+              </div>
+              <div class="right">
+                <h3 class="title">Orders</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="g-item-12 sm:g-item-6 md:g-item-4">
+          <div class="topics">
+            <a class="topic primary" href="{% url 'payment' %}">
+              <div class="left">
+                <div class="icon">
+                  <img src="{% static "img/payment.svg" %}" alt="Icon" />
+                </div>
+              </div>
+              <div class="right">
+                <h3 class="title">Payment</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

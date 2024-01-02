@@ -1,0 +1,16 @@
+{% extends './base.html' %}
+
+{% block title %}
+  Orders Page
+{% endblock %}
+
+{% block scss %}
+{% load static %}
+<link type="text/x-scss" href="{% static 'scss/page/profile.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block app_section %} orders{% endblock %}
+
+{% block content %}
+    <h1>Orders Page</h1>
+{% endblock %}
