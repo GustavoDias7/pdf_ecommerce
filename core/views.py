@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Product, User
-from .forms import UserForm, LoginForm
+from .forms import UserForm, LoginForm, CreditCardForm, BoletoForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.password_validation import validate_password
+from calendar import monthrange
+from datetime import datetime
 
 
 # Create your views here.
@@ -108,3 +110,62 @@ def orders(request):
 @login_required
 def payment(request):
     return render(request, "pages/payment.html")
+
+
+@login_required
+def success(request):
+    return render(request, "pages/success.html")
+
+
+@login_required
+def checkout(request, product_id):
+    template_name = "pages/checkout.html"
+    context = {}
+
+    try:
+        product = Product.objects.get(pk=product_id)
+        context["product"] = product
+    except:
+        return redirect("product", id=product_id)
+
+    if request.method == "POST":
+        POST = request.POST.copy()
+
+        if "payment_format" in POST:
+            context["payment_format"] = POST["payment_format"]
+
+            if POST["payment_format"] == "credit_card":
+                if "expiry" in POST and POST["expiry"] != "":
+                    splitted_date = POST["expiry"].split("/")
+                    year = int(splitted_date[1])
+                    month = int(splitted_date[0])
+                    day = monthrange(year, month)[1]  # last day of the month
+                    POST["expiry"] = f"{month}/{day}/{year}"
+
+                cc_form = CreditCardForm(POST)
+
+                if cc_form.is_valid():
+                    request.session["credit_card"] = {
+                        "card_number": cc_form["card_number"].value(),
+                        "card_name": cc_form["card_name"].value(),
+                        "expiry": cc_form["expiry"].value(),
+                        "cvv": cc_form["cvv"].value(),
+                        "installments": cc_form["installments"].value(),
+                        "date": str(datetime.now()),
+                    }
+
+                context["form"] = cc_form
+
+            elif POST["payment_format"] == "boleto":
+                boleto_form = BoletoForm(POST)
+
+                if boleto_form.is_valid():
+                    pass
+
+                context["form"] = boleto_form
+
+    return render(
+        request,
+        template_name,
+        context,
+    )

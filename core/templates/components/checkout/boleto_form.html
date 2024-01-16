@@ -1,0 +1,23 @@
+<div v-show="showPayment('boleto')">
+  {% csrf_token %}
+  <div class="row full">
+    <input
+      id="cpf"
+      name="cpf"
+      type="tel"
+      v-maska
+      data-maska="###.###.###-##"
+      class="input filled"
+      :class="active('cpf')"
+      v-model="fields.cpf"
+    />
+    <label for="cpf" class="label">CPF</label>
+    {% if form.errors.cpf %}
+    <p class="helper-text error">{{form.errors.cpf.as_text}}</p>
+    {% endif %}
+  </div>
+
+  <div class="row full">
+    <button class="gn-button pm-button full">Finalizar compra</button>
+  </div>
+</div>

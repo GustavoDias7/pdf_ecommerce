@@ -1,0 +1,89 @@
+<div v-show="showPayment('credit_card')">
+  {% csrf_token %}
+  <div class="row full">
+    <input
+      id="card_number"
+      name="card_number"
+      type="tel"
+      v-maska
+      data-maska="#### #### #### ####"
+      class="input filled"
+      :class="active('card_number')"
+      v-model="fields.card_number"
+    />
+    <label for="card_number" class="label">Card Number</label>
+    {% if form.errors.card_number %}
+    <p class="helper-text error">{{form.errors.card_number.as_text}}</p>
+    {% endif %}
+  </div>
+
+  <div class="row full">
+    <input
+      id="card_name"
+      name="card_name"
+      type="text"
+      class="input filled"
+      :class="active('card_name')"
+      v-model="fields.card_name"
+    />
+    <label for="card_name" class="label">Card Name</label>
+    {% if form.errors.card_name %}
+    <p class="helper-text error">{{form.errors.card_name.as_text}}</p>
+    {% endif %}
+  </div>
+
+  <div class="row full">
+    <input
+      id="expiry"
+      name="expiry"
+      type="text"
+      class="input filled"
+      :class="active('expiry')"
+      v-maska
+      data-maska="##/####"
+      v-model="fields.expiry"
+    />
+    <label for="expiry" class="label">Expiry Date</label>
+    {% if form.errors.expiry %}
+    <p class="helper-text error">{{form.errors.expiry.as_text}}</p>
+    {% endif %}
+  </div>
+
+  <div class="row full">
+    <input
+      id="cvv"
+      name="cvv"
+      type="tel"
+      class="input filled"
+      :class="active('cvv')"
+      v-maska
+      data-maska="####"
+      v-model.number="fields.cvv"
+    />
+    <label for="cvv" class="label">CVV</label>
+    {% if form.errors.cvv %}
+    <p class="helper-text error">{{form.errors.cvv.as_text}}</p>
+    {% endif %}
+  </div>
+
+  <div class="row full">
+    <select
+      id="installments"
+      name="installments"
+      class="select"
+      v-model.number="fields.installments"
+    >
+      <option>Selecione a parcela</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    {% if form.errors.installments %}
+    <p class="helper-text error">{{form.errors.installments.as_text}}</p>
+    {% endif %}
+  </div>
+
+  <div class="row full">
+    <button class="gn-button pm-button full">Finalizar compra</button>
+  </div>
+</div>

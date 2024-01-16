@@ -21,18 +21,23 @@
     &:last-of-type {
       margin-bottom: 0px;
     }
+
+    &.full {
+      max-width: 100%;
+    }
   }
 
   .label {
     display: block;
     margin-bottom: 4px;
+    color: $primary-color-500;
   }
 
   .input,
   .select {
     display: block;
     width: 100%;
-    max-width: $width;
+    // max-width: $width;
     height: $inputHeight;
     font-size: 1rem;
     font-weight: 400;

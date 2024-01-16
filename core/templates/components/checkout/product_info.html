@@ -1,0 +1,13 @@
+{% load static%} {% load custom_tags %}
+<div class="checkout-product">
+  <div class="cp-left">
+    <img src="{% static "img/placeholder-1.svg" %}" alt="{{product.name}}" />
+  </div>
+  <div class="cp-right">
+    <h3>{{product.name}}</h3>
+    <p>R$ {{product.price|int_price}}</p>
+    {% comment %}
+    <p>{{product.name}}</p>
+    {% endcomment %}
+  </div>
+</div>

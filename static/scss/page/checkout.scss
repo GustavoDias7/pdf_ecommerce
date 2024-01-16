@@ -1,0 +1,36 @@
+@import "../themes/theme";
+@import "../base/global";
+@import "../base/container";
+@import "../utilities/breakpoints";
+@import "../utilities/mixins";
+
+@import "../components/buttons";
+@import "../components/form";
+@import "../components/topic/primary";
+
+@import "../layout/header/primary";
+@import "../layout/footer/primary";
+// @import "../layout/menu/primary";
+// @import "../layout/modal/primary";
+@import "../layout/section/tertiary";
+@import "../layout/grid";
+
+.checkout .section.tertiary .container {
+  @include max-width(480px);
+
+  .payment-formats,
+  h2 {
+    margin-bottom: 32px;
+  }
+}
+.checkout {
+  .checkout-product {
+    @include flex-align-center;
+    margin-bottom: 32px;
+    gap: 16px;
+
+    img {
+      width: 72px;
+    }
+  }
+}

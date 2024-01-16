@@ -1,0 +1,54 @@
+<div class="payment-formats">
+  <div class="g-root g-gap-2">
+    <div class="g-row">
+      <div class="g-item-12 sm:g-item-4">
+        <label
+          for="credit_card"
+          class="gn-button sc-button full"
+          :class="{bold: showPayment('credit_card')}"
+        >
+          <input
+            id="credit_card"
+            value="credit_card"
+            name="payment_format"
+            v-model="payment_format"
+            type="radio"
+          />
+          Credit Card
+        </label>
+      </div>
+      <div class="g-item-12 sm:g-item-4">
+        <label
+          for="boleto"
+          class="gn-button sc-button full"
+          :class="{bold: showPayment('boleto')}"
+        >
+          <input
+            id="boleto"
+            value="boleto"
+            name="payment_format"
+            v-model="payment_format"
+            type="radio"
+          />
+          Boleto
+        </label>
+      </div>
+      <div class="g-item-12 sm:g-item-4">
+        <label
+          for="pix"
+          class="gn-button sc-button full"
+          :class="{bold: showPayment('pix')}"
+        >
+          <input
+            id="pix"
+            value="pix"
+            name="payment_format"
+            v-model="payment_format"
+            type="radio"
+          />
+          Pix
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

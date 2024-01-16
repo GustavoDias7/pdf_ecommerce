@@ -14,7 +14,9 @@
           <span>/mês</span>
         </span>
       </p>
-      <a class="gn-button sc-button" href="/product/{{product.id}}">See more</a>
+      <a class="gn-button sc-button" href="{% url 'product' product.id %}"
+        >See more</a
+      >
     </div>
     <div class="right">
       <img src="{{ product.image.url }}" alt="Place Holder" />

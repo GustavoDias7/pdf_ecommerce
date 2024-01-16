@@ -8,7 +8,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
-    path("product/<int:id>", views.product, name="prodcut"),
+    path("product/<int:id>", views.product, name="product"),
     path("signin/", views.signin, name="signin"),
     path("signup/", views.signup, name="signup"),
     path("logout/", views.logout_view, name="logout"),
@@ -16,6 +16,8 @@ urlpatterns = [
     path("account/profile/", views.profile, name="profile"),
     path("account/orders/", views.orders, name="orders"),
     path("account/payment/", views.payment, name="payment"),
+    path("checkout/<int:product_id>", views.checkout, name="checkout"),
+    path("checkout/success", views.success, name="success"),
 ]
 # Serving the media files in development mode
 if settings.DEBUG:

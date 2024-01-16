@@ -3,7 +3,8 @@
   <div class="container">
     <div class="product">
       <figure class="main-image">
-        <img src="{% static "img/placeholder-1.svg" %}" alt="Placeholder 2" />
+        <img src="{% static "img/placeholder-1.svg" %}" alt="{{product.name}}"
+        />
       </figure>
       <aside class="main-infos">
         <article>
@@ -28,7 +29,11 @@
             </li>
           </footer>
         </article>
-        <button class="gn-button pm-button">Comprar</button>
+        <a
+          class="gn-button pm-button"
+          href="{% url 'checkout' product_id=product.id %}"
+          >Comprar</a
+        >
       </aside>
     </div>
   </div>

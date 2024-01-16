@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Checkout Page{% endblock %}
+    </title>
+    {% load static %}
+    {% load compress %}
+    {% compress css %}
+        {% block scss %}
+            <link type="text/x-scss" href="{% static 'scss/page/checkout.scss' %}" rel="stylesheet" media="screen">
+        {% endblock %}
+    {% endcompress %}
+</head>
+<body>
+    <div class="app{% block app_section %} checkout{% endblock %}" id="app">
+        {% include "components/header/secondary.html" %}
+        
+        {% block content %}
+          <section class="section tertiary">
+            <div class="container">
+              <h2>Checkout</h2>
+                <form
+                    method="POST"
+                    action="{% url 'checkout' product_id=product.id %}"
+                    class="form"
+                >
+                    {% csrf_token %}
+                    {% include "components/checkout/product_info.html" %}
+                    {% include "components/checkout/payment_formats.html" %}
+                    {% include "components/checkout/credit_card_form.html" %}
+                    {% include "components/checkout/boleto_form.html" %}
+                </form>
+            </div>
+          </section>
+        {% endblock %}
+
+        {% include "components/footer.html" %}
+    </div>
+    <script type="text/javascript">
+        var defaultPaymentFormat = "{{payment_format|default:"credit_card"}}";
+    </script>    
+    {% block vue %}
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/maska@2/dist/maska.umd.js"></script>
+    {% endblock %}
+    {% block js %}
+        <script src="{% static "js/checkout.js" %}"></script>
+    {% endblock %}
+</body>
+</html>
+
