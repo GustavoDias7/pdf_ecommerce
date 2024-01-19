@@ -1,25 +1,28 @@
 {% load custom_tags %}
-<section class="section primary">
-  <div class="container">
-    <div class="left">
-      <h2>{{product.name}}</h2>
-      <p>{{product.description}}</p>
-      <p class="price tertiary">
-        <span class="price-left">
-          <span>R$</span>
-        </span>
-
-        <strong> {{product.price|int_price}} </strong>
-        <span class="price-right">
-          <span>/mês</span>
-        </span>
-      </p>
-      <a class="gn-button sc-button" href="{% url 'product' product.id %}"
-        >See more</a
-      >
-    </div>
-    <div class="right">
-      <img src="{{ product.image.url }}" alt="Place Holder" />
+<section class="section">
+  <div class="container md:container">
+    <div class="g-root g-gap-4 sm:g-gap-8">
+      <div class="g-row">
+        <div class="g-item-12 md:g-item-6">
+          <h2>{{product.name}}</h2>
+          <p>{{product.description}}</p>
+          <p class="price tertiary">
+            <span class="price-left">
+              <span>R$</span>
+            </span>
+            <strong> {{product.price|int_price}} </strong>
+            <span class="price-right">
+              <span>/mês</span>
+            </span>
+          </p>
+          <a class="gn-button sc-button" href="{% url 'product' product.id %}"
+            >See more</a
+          >
+        </div>
+        <div class="g-item-12 md:g-item-6 g-center-item">
+          <img src="{{ product.image.url }}" alt="Place Holder" />
+        </div>
+      </div>
     </div>
   </div>
 </section>

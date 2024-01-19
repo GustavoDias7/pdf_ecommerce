@@ -1,17 +1,23 @@
 {% load static %}
 <section class="primary-banner">
-  <div class="container">
-    <div class="left">
-      <h2>Best burger in town</h2>
-      <p>
-        Welcome to Burger Bliss, where we take your cravings to a whole new
-        level! Our mouthwatering burgers are made from 100% beef and are served
-        on freshly baked buns.
-      </p>
-      <a class="gn-button sc-button" href="/">Explore</a>
-    </div>
-    <div class="right">
-      <img src="{% static "img/placeholder-1.svg" %}" alt="Place Holder"/>
+  <div class="container lg:container">
+    <div class="g-root g-gap-4 md:g-gap-8">
+      <div class="g-row">
+        <div class="g-item-12 md:g-item-6 lg:g-item-5 g-center-item">
+          <div>
+            <h2>Best burger in town</h2>
+            <p>
+              Welcome to Burger Bliss, where we take your cravings to a whole
+              new level! Our mouthwatering burgers are made from 100% beef and
+              are served on freshly baked buns.
+            </p>
+            <a class="gn-button sc-button" href="/">Explore</a>
+          </div>
+        </div>
+        <div class="g-item-12 md:g-item-6 lg:g-item-7 g-center-item">
+          <img src="{% static "img/placeholder-1.svg" %}" alt="Place Holder"/>
+        </div>
+      </div>
     </div>
   </div>
 </section>
