@@ -11,6 +11,10 @@
   justify-content: center;
 }
 
+.g-center-item {
+  @include flex-align-center;
+}
+
 .g-right {
   justify-content: right;
 }
@@ -67,13 +71,4 @@
       }
     }
   }
-}
-
-[id*="layouts-grid"] [class*="g-item"] > div {
-  font-size: 20px;
-  text-align: center;
-  display: block;
-  padding: 8px;
-  border: $primary-border;
-  height: 100%;
 }

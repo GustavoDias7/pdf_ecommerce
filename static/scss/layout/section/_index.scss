@@ -1,0 +1,37 @@
+.section {
+  background-color: $neutral-color-100;
+  border-bottom: 1px solid $neutral-color-200;
+  padding: 32px 0px;
+
+  h2 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: $primary-color-500;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: $primary-color-500;
+    margin-bottom: 1.5rem;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+@include md {
+  .section {
+    h2 {
+      font-weight: 500;
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .gn-button {
+      width: 100%;
+    }
+  }
+}

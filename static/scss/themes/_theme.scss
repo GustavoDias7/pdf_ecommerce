@@ -34,9 +34,18 @@ $primary-box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.32);
 $secondary-box-shadow: 0px 16px 24px -16px rgba(0, 0, 0, 0.32);
 
 // breakpoints
-$xl: 1280px;
-$lg: 1024px;
-$md: 768px;
-$sm: 640px;
-$xs: 320px;
-$breakpoints: "xs" $xs, "sm" $sm, "md" $md, "lg" $lg, "xl" $xl;
+$breakpoints: (
+  "xs": 320px,
+  "sm": 480px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+);
+
+@function bp($name: "") {
+  @each $bp, $vl in $breakpoints {
+    @if ($bp ==$name) {
+      @return $vl;
+    }
+  }
+}

@@ -1,26 +1,16 @@
 @import "../themes/theme";
-@import "../base/global";
-@import "../base/container";
 @import "../utilities/breakpoints";
 @import "../utilities/mixins";
+@import "../base/global";
+@import "../base/container";
 
 @import "../components/buttons";
-@import "../components/form";
-@import "../components/checkbox";
-@import "../components/accordion";
-@import "../components/title-subtitle/primary";
-@import "../components/title-subtitle/secondary";
-@import "../components/price/primary";
-@import "../components/price/secondary";
 @import "../components/price/tertiary";
-@import "../components/list";
 
 @import "../layout/header/primary";
 @import "../layout/footer/primary";
 @import "../layout/banner/primary";
-@import "../layout/banner/secondary";
-@import "../layout/banner/tertiary";
-@import "../layout/section/primary";
-@import "../layout/section/secondary";
+@import "../layout/section";
 @import "../layout/menu/primary";
 @import "../layout/modal/primary";
+@import "../layout/grid";

@@ -1,28 +1,30 @@
-@media (max-width: #{$sm - 1px}) {
-  .container {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
+.container {
+  width: 100%;
+  $padding-on-mobile: 20px;
+  padding-left: $padding-on-mobile;
+  padding-right: $padding-on-mobile;
+  margin-left: auto;
+  margin-right: auto;
 }
-@media (min-width: $sm) {
-  .container {
-    width: 100%;
-    max-width: $sm;
-    margin: 0px auto;
-  }
-}
-@media (min-width: $md) {
-  .container {
-    max-width: $md;
-  }
-}
-@media (min-width: $lg) {
-  .container {
-    max-width: $lg;
-  }
-}
-@media (min-width: $xl) {
-  .container {
-    max-width: $xl;
+
+@each $bp, $vl in $breakpoints {
+  @media (min-width: $vl) {
+    // analyse if the containers below of "not-mobile" need the "max-width" attr
+    .#{$bp}\:container {
+      max-width: $vl !important;
+    }
+
+    $not-mobile: bp("sm");
+
+    @if ($vl >=$not-mobile) {
+      .container {
+        max-width: $vl;
+
+        @if ($vl ==$not-mobile) {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    }
   }
 }
