@@ -1,5 +1,8 @@
 .section.tertiary {
   padding: 32px 0px;
+  flex-grow: 1;
+
+  @include flex-align-center;
 
   h2 {
     font-weight: 700;

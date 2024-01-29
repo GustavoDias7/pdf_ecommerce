@@ -1,7 +1,7 @@
 {% extends './base.html' %}
 
 {% block title %}
-  Success Page
+  Cancel Page
 {% endblock %}
 
 {% block scss %}
@@ -9,8 +9,8 @@
 <link type="text/x-scss" href="{% static 'scss/page/success.scss' %}" rel="stylesheet" media="screen">
 {% endblock %}
 
-{% block app_section %} success{% endblock %}
+{% block app_section %} cancel{% endblock %}
 
 {% block content %}
-  {% include "components/success.html" %}
+  {% include "components/cancel.html" %}
 {% endblock %}

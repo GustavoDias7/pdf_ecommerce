@@ -16,8 +16,8 @@ urlpatterns = [
     path("account/profile/", views.profile, name="profile"),
     path("account/orders/", views.orders, name="orders"),
     path("account/payment/", views.payment, name="payment"),
-    path("checkout/<int:product_id>", views.checkout, name="checkout"),
-    path("checkout/success", views.success, name="success"),
+    path("success", views.success, name="success"),
+    path("cancel", views.cancel, name="cancel"),
 ]
 # Serving the media files in development mode
 if settings.DEBUG:

@@ -26,11 +26,10 @@
             </li>
           </footer>
         </article>
-        <a
-          class="gn-button pm-button full"
-          href="{% url 'checkout' product_id=product.id %}"
-          >Comprar</a
-        >
+        <form action="{% url 'product' id=product.id %}" method="POST">
+          {% csrf_token %}
+          <button class="gn-button pm-button full">Checkout</button>
+        </form>
       </aside>
     </div>
   </div>
