@@ -31,6 +31,18 @@ def create_stripe_product_price(modeladmin, request, queryset):
 
 
 class ProductAdmin(admin.ModelAdmin):
+    list_display = ["name", "id", "archived"]
+    readonly_fields = ["id"]
+    fields = [
+        "id",
+        "name",
+        "price",
+        "stripe_price_id",
+        "description",
+        "image",
+        "pdf",
+        "archived",
+    ]
     actions = [create_stripe_product_price]
 
 

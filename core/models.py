@@ -21,6 +21,7 @@ class Product(models.Model):
     description = models.TextField(max_length=400)
     image = models.ImageField(upload_to="images/", null=True)
     pdf = models.FileField(upload_to="pdfs/", null=True)
+    archived = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Product: {self.name}"

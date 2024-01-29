@@ -12,7 +12,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 def home(request):
-    products = Product.objects.filter(id__in=(1, 2, 3, 4))
+    products = Product.objects.filter(archived=False, id__in=(1, 2, 3, 4))
     context = {"products": products}
     return render(request, "pages/index.html", context)
 
@@ -20,7 +20,7 @@ def home(request):
 # Create your views here.
 def product(request, id):
     try:
-        product = Product.objects.get(pk=id)
+        product = Product.objects.filter(archived=False).get(pk=id)
         context = {"product": product}
     except:
         context = {"error": "Desculpe, o produto solicitado não existe."}
