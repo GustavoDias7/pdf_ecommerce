@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from core import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -8,6 +8,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
+    path("products/", views.products, name="products"),
     path("product/<int:id>", views.product, name="product"),
     path("signin/", views.signin, name="signin"),
     path("signup/", views.signup, name="signup"),
@@ -18,6 +19,7 @@ urlpatterns = [
     path("account/payment/", views.payment, name="payment"),
     path("success", views.success, name="success"),
     path("cancel", views.cancel, name="cancel"),
+    path("api/", include("api.urls")),
 ]
 # Serving the media files in development mode
 if settings.DEBUG:

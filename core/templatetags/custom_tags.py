@@ -1,11 +1,15 @@
 from django import template
-
+from django.conf import settings
 
 register = template.Library()
 
 
-@register.filter(name="int_price")
-def int_price(value):
-    var_1 = str(value)[0 : len(str(value)) - 2]
-    var_2 = str(value)[-2:]
-    return f"{var_1},{var_2}"
+@register.filter(name="cents_price")
+def cents_price(value):
+    cents = int(value) / 100
+    return f"{cents:.2f}".replace(".", ",")
+
+
+@register.filter(name="get_setting_var")
+def get_setting_var(var=""):
+    return getattr(settings, var, "")

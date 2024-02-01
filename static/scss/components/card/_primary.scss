@@ -1,0 +1,54 @@
+.card.primary {
+  //   @include max-width(272px);
+  color: $neutral-color-700;
+  background-color: $neutral-color-100;
+  box-shadow: $primary-border;
+  color: $primary-color-500;
+
+  $mb: 16px;
+
+  .img {
+    position: relative;
+    width: 100%;
+    padding-top: $aspect-radio-16-9;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .description {
+    padding: $mb $mb * 2;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: $mb;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+  }
+
+  .gn-button,
+  .price {
+    margin-bottom: $mb;
+  }
+
+  .link {
+    color: $primary-color-500;
+  }
+
+  .show-more {
+    display: block;
+    @include reset-button;
+    color: $primary-color-500;
+    margin: 0px auto $mb;
+  }
+}

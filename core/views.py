@@ -12,7 +12,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 def home(request):
-    products = Product.objects.filter(archived=False, id__in=(1, 2, 3, 4))
+    products = Product.objects.filter(archived=False)[:4]
     context = {"products": products}
     return render(request, "pages/index.html", context)
 
@@ -27,7 +27,6 @@ def product(request, id):
 
     if request.method == "POST":
         try:
-            URL = "http://127.0.0.1:8000"
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
                     {
@@ -37,8 +36,8 @@ def product(request, id):
                     },
                 ],
                 mode="payment",
-                success_url=f"{URL}/success",
-                cancel_url=f"{URL}/cancel",
+                success_url=f"{settings.URL}/success",
+                cancel_url=f"{settings.URL}/cancel",
                 customer_email=request.user.email,
             )
 
@@ -47,6 +46,17 @@ def product(request, id):
             print(e)
 
     return render(request, "pages/product.html", context)
+
+
+@login_required
+def products(request):
+    try:
+        products = Product.objects.filter(archived=False)[:6]
+        context = {"products": products}
+    except:
+        context = {"error": "Desculpe, o produto solicitado não existe."}
+
+    return render(request, "pages/products.html", context)
 
 
 def signin(request):

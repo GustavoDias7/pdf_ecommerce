@@ -22,14 +22,16 @@
           <footer>
             <li>
               <strong>Price:</strong>
-              <span>R$ {{product.price|int_price}}</span>
+              <span>R$ {{product.price|cents_price}}</span>
             </li>
           </footer>
         </article>
+        {% if product.stripe_price_id %}
         <form action="{% url 'product' id=product.id %}" method="POST">
           {% csrf_token %}
           <button class="gn-button pm-button full">Checkout</button>
         </form>
+        {% endif %}
       </aside>
     </div>
   </div>

@@ -10,7 +10,7 @@
             <span class="price-left">
               <span>R$</span>
             </span>
-            <strong> {{product.price|int_price}} </strong>
+            <strong> {{product.price|cents_price}} </strong>
             <span class="price-right">
               <span>/mês</span>
             </span>
@@ -20,7 +20,7 @@
           >
         </div>
         <div class="g-item-12 md:g-item-6 g-center-item">
-          <img src="{{ product.image.url }}" alt="Place Holder" />
+          <img src="{{ product.image.url }}" alt="{{product.name}}" />
         </div>
       </div>
     </div>

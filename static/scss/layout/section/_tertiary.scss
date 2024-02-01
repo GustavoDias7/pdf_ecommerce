@@ -1,12 +1,19 @@
 .section.tertiary {
-  padding: 32px 0px;
+  padding: 64px 0px;
   flex-grow: 1;
-
-  @include flex-align-center;
 
   h2 {
     font-weight: 700;
     font-size: 2rem;
     color: $primary-color-500;
+  }
+
+  &.align-center {
+    @include flex-align-center;
+  }
+}
+@include md {
+  .section.tertiary {
+    padding: 32px 0px;
   }
 }

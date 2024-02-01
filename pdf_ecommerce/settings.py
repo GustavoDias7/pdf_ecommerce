@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "compressor",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,12 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 STRIPE_PUBLISHABLE_KEY = env.str("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = env.str("STRIPE_SECRET_KEY")
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+}
+
+PRODUCT_API = env.str("PRODUCT_API")
+
+URL = "http://127.0.0.1:8000"

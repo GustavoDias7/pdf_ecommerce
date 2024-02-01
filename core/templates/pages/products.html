@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% load custom_tags %}
+
+{% block title %}
+  Product Page
+{% endblock %}
+
+{% block scss %}
+{% load static %}
+<link type="text/x-scss" href="{% static 'scss/page/products.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    {% include "components/products.html" %}
+{% endblock %}
+
+{% block js %}
+  <script>
+    const PRODUCT_API = "{{'PRODUCT_API'|get_setting_var}}"
+  </script>
+  <script src="{% static "js/products.js" %}"></script>
+{% endblock %}

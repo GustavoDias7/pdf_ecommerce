@@ -5,9 +5,6 @@
   </div>
   <div class="cp-right">
     <h3>{{product.name}}</h3>
-    <p>R$ {{product.price|int_price}}</p>
-    {% comment %}
-    <p>{{product.name}}</p>
-    {% endcomment %}
+    <p>R$ {{product.price|cents_price}}</p>
   </div>
 </div>

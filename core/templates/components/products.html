@@ -1,0 +1,91 @@
+{% load custom_tags %}
+<section class="section tertiary">
+  <div class="container lg:container">
+    <div class="g-root g-gap-8">
+      <div class="g-row">
+        {% for product in products %}
+        <div class="g-item-12 sm:g-item-6 md:g-item-4">
+          <article class="card primary">
+            <a href="{% url 'product' id=product.id %}">
+              <figure class="img">
+                <img src="{{ product.image.url }}" alt="{{product.name}}" />
+              </figure>
+            </a>
+            <div class="description">
+              <h3 class="title">{{product.name}}</h3>
+              <p class="price tertiary">
+                <span class="left"> <span>R$</span> </span>
+                <strong> {{product.price|cents_price}} </strong>
+                <span class="right"> <span>/mês</span> </span>
+              </p>
+              <div class="subtitle see-more" id="see-more-{{product.id}}">
+                <p>{{product.description}}</p>
+              </div>
+
+              <button
+                class="show-more"
+                id="show-more-{{product.id}}"
+                @click="showMore('{{product.id}}')"
+              >
+                show more
+              </button>
+
+              <a
+                class="gn-button pm-button full"
+                href="{% url 'product' id=product.id %}"
+              >
+                See more
+              </a>
+            </div>
+          </article>
+        </div>
+        {% endfor %}
+        <div
+          v-for="product in products"
+          class="g-item-12 sm:g-item-6 md:g-item-4"
+        >
+          <article class="card primary">
+            <a :href="`/product/${product.id}`">
+              <figure class="img">
+                <img :src="[[product.image]]" :alt="[[product.name]]" />
+              </figure>
+            </a>
+            <div class="description">
+              <h3 class="title">[[product.name]]</h3>
+              <p class="price tertiary">
+                <span class="left"> <span>R$</span> </span>
+                <strong v-text="cents_price([[product.price]])"> </strong>
+                <span class="right"> <span>/mês</span> </span>
+              </p>
+              <div class="subtitle see-more" :id="`see-more-${[[product.id]]}`">
+                <p>[[product.description]]</p>
+              </div>
+
+              <button
+                class="show-more"
+                :id="`show-more-${[[product.id]]}`"
+                @click="showMore([[product.id]])"
+              >
+                show more
+              </button>
+
+              <a
+                class="gn-button pm-button full"
+                :href="`/product/${product.id}`"
+              >
+                See more
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gn-button sc-button center more-products"
+      @click="getProducts"
+      :class="{none: productAPI === null}"
+    >
+      Mais Produtos
+    </div>
+  </div>
+</section>
