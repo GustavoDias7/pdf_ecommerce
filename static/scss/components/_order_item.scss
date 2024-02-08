@@ -1,0 +1,25 @@
+.order-item {
+  display: flex;
+  gap: 1rem;
+  border: $primary-border;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: $primary-color-500;
+
+  &:last-of-type {
+    margin-bottom: 0px;
+  }
+
+  img {
+    @include max-width(180px);
+  }
+
+  h3 {
+    a {
+      color: $primary-color-500;
+    }
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+}

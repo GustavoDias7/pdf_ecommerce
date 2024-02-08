@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Arquivo models.py do app account
 from django.contrib.auth.models import (
@@ -22,9 +24,34 @@ class Product(models.Model):
     image = models.ImageField(upload_to="images/", null=True)
     pdf = models.FileField(upload_to="pdfs/", null=True)
     archived = models.BooleanField(default=False)
+    discount = models.DecimalField(
+        max_digits=3,
+        decimal_places=2,
+        default=0.0,
+        validators=[MinValueValidator(0), MaxValueValidator(1)],
+    )
 
     def __str__(self):
-        return f"Product: {self.name}"
+        return f"{self.name}"
+
+
+class Order(models.Model):
+    session_id = models.CharField(max_length=70)
+    product = models.ForeignKey("Product", on_delete=models.RESTRICT)
+    user = models.ForeignKey("User", on_delete=models.RESTRICT)
+    payment_status = models.CharField(
+        max_length=1, choices=list(settings.PAYMENT_STATUS.items())
+    )
+    date = models.DateTimeField(auto_now=True)
+    unit_price = models.PositiveSmallIntegerField(validators=[MinValueValidator(1)])
+    discount = models.DecimalField(
+        max_digits=3,
+        decimal_places=2,
+        validators=[MinValueValidator(0), MaxValueValidator(1)],
+    )
+
+    def __str__(self):
+        return f"Order {self.id}"
 
 
 class UserManager(BaseUserManager):

@@ -37,6 +37,7 @@ class ProductAdmin(admin.ModelAdmin):
         "id",
         "name",
         "price",
+        "discount",
         "stripe_price_id",
         "description",
         "image",
@@ -46,6 +47,31 @@ class ProductAdmin(admin.ModelAdmin):
     actions = [create_stripe_product_price]
 
 
+class OrderAdmin(admin.ModelAdmin):
+    readonly_fields = [
+        "id", 
+        "date", 
+        "product", 
+        "user", 
+        "payment_status",
+        "unit_price",
+        "discount",
+        "session_id",
+    ]
+
+    fields = [
+        "id",
+        "date",
+        "product",
+        "user",
+        "payment_status",
+        "unit_price",
+        "discount",
+        "session_id",
+    ]
+
+
 # Register your models here.
-admin.site.register(models.Product, ProductAdmin)
 admin.site.register(models.User)
+admin.site.register(models.Product, ProductAdmin)
+admin.site.register(models.Order, OrderAdmin)

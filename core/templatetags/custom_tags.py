@@ -13,3 +13,18 @@ def cents_price(value):
 @register.filter(name="get_setting_var")
 def get_setting_var(var=""):
     return getattr(settings, var, "")
+
+
+@register.simple_tag
+def total_price(cents, discount):
+    return cents_price(cents - (cents * discount))
+
+
+@register.filter(name="payment_status")
+def payment_status(v):
+    return settings.PAYMENT_STATUS.get(v, "")
+
+
+@register.filter(name="percent")
+def percent(decimal=0.0):
+    return int(decimal * 100)

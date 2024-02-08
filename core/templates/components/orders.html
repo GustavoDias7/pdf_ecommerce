@@ -1,0 +1,43 @@
+{% load custom_tags %}
+
+<section class="section tertiary">
+  <div class="container lg:container">
+    <h2>Your Orders</h2>
+    <br />
+    {% if orders %} {% for order in orders %}
+    <div class="order-item">
+      <div>
+        <a href="{% url 'product' id=order.product.id %}">
+          <img src="{{order.product.image.url}}" alt="{{order.product.name}}" />
+        </a>
+      </div>
+      <div>
+        <h3>
+          <a href="{% url 'product' id=order.product.id %}">
+            {{order.product.name}}
+          </a>
+        </h3>
+        <p>Order ID: {{order.id}}</p>
+        <p>{{order.date}}</p>
+        <p>Payment status: {{order.payment_status|payment_status}}</p>
+
+        {% if order.discount > 0 %}
+        <p>Price: R$ {{order.unit_price|cents_price}}</p>
+        <p>Discount: {{order.discount}}</p>
+        <p>
+          <strong
+            >Total: R$ {% total_price order.unit_price order.discount %}</strong
+          >
+        </p>
+        {% else %}
+        <p>
+          <strong>Total: R$ {{order.unit_price|cents_price}} </strong>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <p>Thare is no orders in your account!</p>
+    {% endif %}
+  </div>
+</section>

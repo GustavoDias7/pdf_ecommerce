@@ -17,12 +17,23 @@
                 <strong>Description:</strong>
                 <span> {{product.description}} </span>
               </li>
+
+              {% if product.discount > 0 %}
+              <li>
+                <strong>Price:</strong>
+                <span> R$ {{product.price|cents_price}}</span>
+              </li>
+              <li>
+                <strong>Discount:</strong>
+                <span> -{{product.discount|percent}}% </span>
+              </li>
+              {% endif %}
             </ul>
           </section>
           <footer>
             <li>
-              <strong>Price:</strong>
-              <span>R$ {{product.price|cents_price}}</span>
+              <strong>Total:</strong>
+              <span>R$ {% total_price product.price product.discount %}</span>
             </li>
           </footer>
         </article>

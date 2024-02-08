@@ -13,11 +13,7 @@
             </a>
             <div class="description">
               <h3 class="title">{{product.name}}</h3>
-              <p class="price tertiary">
-                <span class="left"> <span>R$</span> </span>
-                <strong> {{product.price|cents_price}} </strong>
-                <span class="right"> <span>/mês</span> </span>
-              </p>
+              {% include "./price.html" with price=product.price discount=product.discount %}
               <div class="subtitle see-more" id="see-more-{{product.id}}">
                 <p>{{product.description}}</p>
               </div>
@@ -80,6 +76,7 @@
         </div>
       </div>
     </div>
+    {% if products_count > 6 %}
     <div
       class="gn-button sc-button center more-products"
       @click="getProducts"
@@ -87,5 +84,6 @@
     >
       Mais Produtos
     </div>
+    {% endif %}
   </div>
 </section>

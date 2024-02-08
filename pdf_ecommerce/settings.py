@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "compressor",
     "rest_framework",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,13 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4242",
+    "http://127.0.0.1:8000",
 ]
 
 ROOT_URLCONF = "pdf_ecommerce.urls"
@@ -115,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Sao_Paulo"
 
 USE_I18N = True
 
@@ -155,4 +163,8 @@ REST_FRAMEWORK = {
 
 PRODUCT_API = env.str("PRODUCT_API")
 
-URL = "http://127.0.0.1:8000"
+PAYMENT_STATUS = {
+    "w": "waiting",
+    "p": "paid",
+    "u": "unpaid",
+}

@@ -1,0 +1,26 @@
+{% load custom_tags %} 
+
+{% if discount > 0 %}
+<div>
+  <small>De <s>R$ {{price|cents_price}}</s></small>
+  <p class="price tertiary">
+    <span class="left">
+      <span>R$</span>
+    </span>
+    <strong> {% total_price price discount %} </strong>
+    <span class="right">
+      <span>/mês</span>
+    </span>
+  </p>
+</div>
+{% else %}
+<p class="price tertiary">
+  <span class="left">
+    <span>R$</span>
+  </span>
+  <strong> {{price|cents_price}} </strong>
+  <span class="right">
+    <span>/mês</span>
+  </span>
+</p>
+{% endif %}
