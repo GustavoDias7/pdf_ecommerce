@@ -20,6 +20,7 @@ urlpatterns = [
     path("success/", views.success, name="success"),
     path("cancel/", views.cancel, name="cancel"),
     path("stripe-webhook/", views.stripe_webhook, name="stripe_webhook"),
+    path("email/", views.email, name="email"),
     path("api/", include("api.urls")),
 ]
 # Serving the media files in development mode

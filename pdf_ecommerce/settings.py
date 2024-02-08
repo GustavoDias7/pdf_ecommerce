@@ -168,3 +168,8 @@ PAYMENT_STATUS = {
     "p": "paid",
     "u": "unpaid",
 }
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = "8025"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""

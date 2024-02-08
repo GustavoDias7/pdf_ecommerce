@@ -8,6 +8,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.conf import settings
 import stripe
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.http import HttpResponse
 
 
@@ -48,30 +49,24 @@ def stripe_webhook(request):
         if session.payment_status == "paid":
             # Fulfill the purchase
             fulfill_order(session)
+            send_ebook(session)
 
     elif event["type"] == "checkout.session.async_payment_succeeded":
         session = event["data"]["object"]
 
         # Fulfill the purchase
         fulfill_order(session)
+        send_ebook(session)
 
     elif event["type"] == "checkout.session.async_payment_failed":
         session = event["data"]["object"]
 
+        failed_order(session)
         # Send an email to the customer asking them to retry their order
-        email_customer_about_failed_payment(session)
+        email_failed_payment(session)
 
     # Passed signature verification
     return HttpResponse(status=200)
-
-
-def fulfill_order(session):
-    try:
-        order = Order.objects.get(session_id=session.id)
-        order.payment_status = session.payment_status[0]
-        order.save()
-    except Exception as e:
-        print(e)
 
 
 def create_order(session):
@@ -89,12 +84,47 @@ def create_order(session):
     except Exception as e:
         print(e)
 
+def fulfill_order(session):
+    try:
+        order = Order.objects.get(session_id=session.id)
+        order.payment_status = session.payment_status[0]
+        order.save()
+    except Exception as e:
+        print(e)
 
-def email_customer_about_failed_payment(session):
+def failed_order(session):
     try:
         order = Order.objects.get(session_id=session.id)
         order.payment_status = "u"
         order.save()
+    except Exception as e:
+        print(e)
+
+def email_failed_payment(session):
+    send_mail(
+        subject=f"Subject: Failed Payment",
+        from_email="from@example.com",
+        recipient_list=[session.customer_email],
+        fail_silently=False,
+        message= f"Message: Failed Payment",
+        
+    )
+
+def send_ebook(session):
+    try:
+        product_id = session.metadata.product_id
+        product = Product.objects.get(id=product_id)
+
+        rendered = render_to_string("emails/ebook.html", {"product": product})
+
+        send_mail(
+            subject=f"Subject: E-book ${product.name}",
+            from_email="from@example.com",
+            recipient_list=[session.customer_email],
+            fail_silently=False,
+            message= f"Message: E-book ${product.name}",
+            html_message=rendered
+        )
     except Exception as e:
         print(e)
 
@@ -258,3 +288,7 @@ def success(request):
 def cancel(request):
     return render(request, "pages/cancel.html")
 
+
+
+def email(request):
+    return render(request, "pages/email.html")
