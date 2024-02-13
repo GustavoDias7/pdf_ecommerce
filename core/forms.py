@@ -15,13 +15,9 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput())
 
 
-# class CreditCardForm(forms.Form):
-#     card_number = forms.CharField(max_length=25, validators=[validate_credit_card])
-#     card_name = forms.CharField(min_length=3, max_length=50)
-#     expiry = forms.DateField(validators=[is_expired])
-#     cvv = forms.IntegerField(max_value=9999)
-#     installments = forms.IntegerField(max_value=99)
+class ContactForm(forms.Form):
+    name = forms.CharField(min_length=3, max_length=100)
+    email = forms.EmailField(max_length=255)
+    subject = forms.CharField(min_length=3, max_length=150)
+    message = forms.CharField(min_length=3, max_length=400)
 
-
-# class BoletoForm(forms.Form):
-#     cpf = forms.CharField(validators=[is_cpf])

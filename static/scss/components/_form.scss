@@ -1,339 +1,311 @@
-.form {
-  // font
-  $fontSize: 16;
-  $padding: 16px;
+// font
+$f-font-size: 16;
+$f-padding: 16px;
 
-  // dimentions
-  $inputHeight: 56px;
-  $width: 312px;
+// dimentions
+$f-input-height: 56px;
+$f-width: 312px;
 
-  // borders
-  $border-radius: 8px;
-  $primary-border-width: 1px;
-  $primary-border: $primary-border-width solid;
+// borders
+$f-border-radius: 8px;
+$f-primary-border-width: 1px;
+$f-primary-border: $f-primary-border-width solid;
 
-  .row {
-    position: relative;
-    width: 100%;
-    max-width: $width;
-    margin-bottom: 12px;
+.f-row {
+  position: relative;
+  width: 100%;
+  // max-width: $f-width;
+}
 
-    &:last-of-type {
-      margin-bottom: 0px;
-    }
+.f-label {
+  display: block;
+  margin-bottom: 4px;
+}
 
-    &.full {
-      max-width: 100%;
-    }
+.f-input,
+.f-select {
+  display: block;
+  width: 100%;
+  height: $f-input-height;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  border-radius: $f-border-radius;
+  padding: $f-padding;
+  outline: none;
+  border: $f-primary-border;
+  transition: border $primary-transition;
+  background-color: transparent;
+
+  &:focus ~ .f-label,
+  &:hover ~ .f-label {
+    top: -(#{$f-font-size}px / 2);
   }
 
-  .label {
-    display: block;
-    margin-bottom: 4px;
-    color: $primary-color-500;
+  border-color: $primary-color-500;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
 
-  .input,
-  .select {
-    display: block;
-    width: 100%;
-    // max-width: $width;
-    height: $inputHeight;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.2;
-    border-radius: $border-radius;
-    padding: $padding;
-    outline: none;
-    border: $primary-border;
-    transition: border $primary-transition;
-    background-color: transparent;
+  &::placeholder {
+    color: $primary-color-200;
+  }
 
-    &:focus ~ .label,
-    &:hover ~ .label {
-      top: -(#{$fontSize}px / 2);
-    }
-
-    border-color: $primary-color-500;
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
+  &.transparent {
+    color: transparent;
+    user-select: none;
 
     &::placeholder {
       color: $primary-color-200;
     }
-
-    &.transparent {
-      color: transparent;
-      user-select: none;
-
-      &::placeholder {
-        color: $primary-color-200;
-      }
-    }
-
-    &.error {
-      border-color: $error-color-100;
-    }
-
-    &.success {
-      border-color: $success-color-100;
-    }
   }
 
-  // icon on the right side
-  // input.input {
-
-  //   &.error,
-  //   &.success {
-  //     background-repeat: no-repeat;
-  //     background-size: 16px;
-  //     background-position: calc(100% - $padding) center;
-  //   }
-
-  //   &.error {
-  //     background-image: url(pathImages("error.svg"));
-  //   }
-
-  //   &.success {
-  //     background-image: url(pathImages("check-valid.svg"));
-  //   }
-  // }
-
-  $margin: 4px;
-
-  .input.outline {
-    border-top: none;
-
-    & ~ .label {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      max-width: $width;
-      display: flex;
-      font-size: #{$fontSize}px;
-      line-height: #{$fontSize}px;
-      transition: font-size $primary-transition;
-
-      padding: 0;
-      background-color: transparent;
-      pointer-events: none;
-
-      &::before,
-      &::after {
-        content: "";
-        border-top: $primary-border;
-        height: 8px;
-      }
-
-      &::before {
-        border-left: $primary-border;
-        border-top-left-radius: $border-radius;
-        border-color: $primary-color-500;
-        width: 11px;
-      }
-
-      &::after {
-        border-right: $primary-border;
-        border-top-right-radius: $border-radius;
-        border-color: $primary-color-500;
-        flex: 1;
-      }
-
-      span {
-        position: absolute;
-        top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
-        left: 16px;
-        transition: top $primary-transition;
-      }
-    }
-
-    &:disabled:focus ~ .label,
-    &:disabled:hover ~ .label {
-      font-size: #{$fontSize}px;
-      line-height: #{$fontSize}px;
-
-      span {
-        position: absolute;
-        top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
-        left: 16px;
-        transition: top $primary-transition;
-      }
-    }
-
-    &.active ~ .label,
-    &:disabled.active ~ .label,
-    &:focus ~ .label,
-    &:hover ~ .label {
-      font-size: #{$fontSize - 2}px;
-      line-height: #{$fontSize - 2}px;
-
-      span {
-        position: relative;
-        top: -8px;
-        left: 0px;
-      }
-    }
-
-    &:disabled:hover ~ .label::before {
-      margin-right: 0px;
-    }
-
-    &.active ~ .label::before,
-    &:disabled.active ~ .label::before,
-    &:hover ~ .label::before,
-    &:focus ~ .label::before {
-      margin-right: $margin;
-    }
-
-    &:disabled:hover ~ .label::after {
-      margin-left: 0px;
-    }
-
-    &.active ~ .label::after,
-    &:disabled.active ~ .label::after,
-    &:hover ~ .label::after,
-    &:focus ~ .label::after {
-      margin-left: $margin;
-    }
-
-    &:disabled ~ .label {
-      opacity: 0.4;
-    }
-
-    &.error {
-      ~ .label::before,
-      ~ .label::after {
-        border-color: $error-color-100;
-      }
-    }
-
-    &.success {
-      ~ .label::before,
-      ~ .label::after {
-        border-color: $success-color-100;
-      }
-    }
+  &.error {
+    border-color: $error-color-100;
   }
 
-  .input.filled {
-    padding: 24px 16px 8px;
-
-    & ~ .label {
-      margin-bottom: 0;
-      position: absolute;
-      top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
-      left: 16px;
-      transition: $primary-transition;
-      width: 100%;
-      max-width: $width;
-      display: flex;
-      font-size: #{$fontSize}px;
-      line-height: #{$fontSize}px;
-      background-color: transparent;
-      pointer-events: none;
-    }
-
-    &:disabled ~ .label {
-      opacity: 0.4;
-    }
-
-    &:disabled:hover ~ .label {
-      top: calc(#{$inputHeight} / 2 - (#{$fontSize}px / 2));
-      font-size: #{$fontSize}px;
-    }
-
-    &.active ~ .label,
-    &:disabled.active ~ .label,
-    &:focus ~ .label,
-    &:hover ~ .label {
-      font-size: #{$fontSize - 2}px;
-      top: 8px;
-    }
-  }
-
-  .helper-text {
-    display: block;
-    font-size: 0.75rem;
-    padding: 2px 12px 0px;
-
-    &.error {
-      color: $error-color-100;
-    }
-
-    &.success {
-      color: $success-color-100;
-    }
-    &.center {
-      text-align: center;
-    }
-  }
-
-  .input-container {
-    position: relative;
-
-    .right-element {
-      position: absolute;
-      top: 0px;
-      bottom: 0px;
-      right: 16px;
-      margin: auto;
-      height: min-content;
-
-      .gn-button {
-        height: 32px;
-        padding: 0px 12px;
-        font-size: 12px;
-      }
-    }
-
-    input[name^="right"] {
-      padding-right: 64px;
-    }
-  }
-
-  .select {
-    appearance: none;
-    /* for Firefox */
-    -moz-appearance: none;
-    /* for Chrome */
-    -webkit-appearance: none;
-
-    /* For IE10 */
-    &::-ms-expand {
-      display: none;
-    }
-
-    cursor: pointer;
-    background-image: url(pathImages("select-arrow.svg"));
-    background-repeat: no-repeat;
-    background-size: 10px;
-    background-position: calc(100% - #{$padding}) center;
-
-    option:first-child {
-      display: none;
-    }
-  }
-
-  textarea.input {
-    resize: vertical;
-    min-height: $inputHeight * 2;
+  &.success {
+    border-color: $success-color-100;
   }
 }
 
-.form-container {
-  @include flex-center-center;
-  padding: 32px 0;
-  min-height: calc(100vh - 128px);
+// icon on the right side
+// input.input {
 
-  .form {
-    @include max-width(312px);
+//   &.error,
+//   &.success {
+//     background-repeat: no-repeat;
+//     background-size: 16px;
+//     background-position: calc(100% - $padding) center;
+//   }
 
-    .form-title {
-      font-size: 2rem;
+//   &.error {
+//     background-image: url(pathImages("error.svg"));
+//   }
+
+//   &.success {
+//     background-image: url(pathImages("check-valid.svg"));
+//   }
+// }
+
+$f-margin: 4px;
+
+.f-input.outline {
+  border-top: none;
+
+  & ~ .f-label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    max-width: $f-width;
+    display: flex;
+    font-size: #{$f-font-size}px;
+    line-height: #{$f-font-size}px;
+    transition: font-size $primary-transition;
+
+    padding: 0;
+    background-color: transparent;
+    pointer-events: none;
+
+    &::before,
+    &::after {
+      content: "";
+      border-top: $f-primary-border;
+      height: 8px;
+    }
+
+    &::before {
+      border-left: $f-primary-border;
+      border-top-left-radius: $f-border-radius;
+      border-color: $primary-color-500;
+      width: 11px;
+    }
+
+    &::after {
+      border-right: $f-primary-border;
+      border-top-right-radius: $f-border-radius;
+      border-color: $primary-color-500;
+      flex: 1;
+    }
+
+    span {
+      position: absolute;
+      top: calc(#{$f-input-height} / 2 - (#{$f-font-size}px / 2));
+      left: 16px;
+      transition: top $primary-transition;
     }
   }
+
+  &:disabled:focus ~ .f-label,
+  &:disabled:hover ~ .f-label {
+    font-size: #{$f-font-size}px;
+    line-height: #{$f-font-size}px;
+
+    span {
+      position: absolute;
+      top: calc(#{$f-input-height} / 2 - (#{$f-font-size}px / 2));
+      left: 16px;
+      transition: top $primary-transition;
+    }
+  }
+
+  &.active ~ .f-label,
+  &:disabled.active ~ .f-label,
+  &:focus ~ .f-label,
+  &:hover ~ .f-label {
+    font-size: #{$f-font-size - 2}px;
+    line-height: #{$f-font-size - 2}px;
+
+    span {
+      position: relative;
+      top: -8px;
+      left: 0px;
+    }
+  }
+
+  &:disabled:hover ~ .f-label::before {
+    margin-right: 0px;
+  }
+
+  &.active ~ .f-label::before,
+  &:disabled.active ~ .f-label::before,
+  &:hover ~ .f-label::before,
+  &:focus ~ .f-label::before {
+    margin-right: $f-margin;
+  }
+
+  &:disabled:hover ~ .f-label::after {
+    margin-left: 0px;
+  }
+
+  &.active ~ .f-label::after,
+  &:disabled.active ~ .f-label::after,
+  &:hover ~ .f-label::after,
+  &:focus ~ .f-label::after {
+    margin-left: $f-margin;
+  }
+
+  &:disabled ~ .f-label {
+    opacity: 0.4;
+  }
+
+  &.error {
+    ~ .f-label::before,
+    ~ .f-label::after {
+      border-color: $error-color-100;
+    }
+  }
+
+  &.success {
+    ~ .f-label::before,
+    ~ .f-label::after {
+      border-color: $success-color-100;
+    }
+  }
+}
+
+.f-input.filled {
+  padding: 24px 16px 8px;
+
+  & ~ .f-label {
+    margin-bottom: 0;
+    position: absolute;
+    top: calc(#{$f-input-height} / 2 - (#{$f-font-size}px / 2));
+    left: 16px;
+    transition: $primary-transition;
+    display: flex;
+    font-size: #{$f-font-size}px;
+    line-height: #{$f-font-size}px;
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  &:disabled ~ .f-label {
+    opacity: 0.4;
+  }
+
+  &:disabled:hover ~ .f-label {
+    top: calc(#{$f-input-height} / 2 - (#{$f-font-size}px / 2));
+    font-size: #{$f-font-size}px;
+  }
+
+  &.active ~ .f-label,
+  &:disabled.active ~ .f-label,
+  &:focus ~ .f-label,
+  &:hover ~ .f-label {
+    font-size: #{$f-font-size - 2}px;
+    top: 8px;
+  }
+}
+
+.f-helper {
+  display: block;
+  font-size: 0.75rem;
+  padding: 2px 12px 0px;
+
+  &.error {
+    color: $error-color-100;
+  }
+
+  &.success {
+    color: $success-color-100;
+  }
+
+  &.center {
+    text-align: center;
+  }
+}
+
+.f-container {
+  position: relative;
+
+  .f-right {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 16px;
+    margin: auto;
+    height: min-content;
+
+    p {
+      background-color: #1a1a1a;
+      color: #f1f1f1;
+      padding: 4px;
+    }
+  }
+
+  input[name^="f-right"] {
+    padding-right: 64px;
+  }
+}
+
+.f-select {
+  appearance: none;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+
+  /* For IE10 */
+  &::-ms-expand {
+    display: none;
+  }
+
+  cursor: pointer;
+  background-image: url(pathImages("select-arrow.svg"));
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: calc(100% - $f-padding) center;
+
+  option:first-of-type {
+    display: none;
+  }
+}
+
+textarea.f-input {
+  resize: vertical;
+  min-height: $f-input-height * 2;
 }

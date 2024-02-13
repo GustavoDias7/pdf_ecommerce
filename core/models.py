@@ -53,7 +53,6 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id}"
 
-
 class UserManager(BaseUserManager):
     def _create_user(
         self, username, email, password, is_staff, is_superuser, **extra_fields

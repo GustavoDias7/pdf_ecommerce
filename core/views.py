@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product, User, Order
-from .forms import UserForm, LoginForm
+from .forms import UserForm, LoginForm, ContactForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -14,11 +14,6 @@ from django.http import HttpResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
-endpoint_secret = (
-    "whsec_da38ae8feb81bfc23fa16fc6ce736cc77c63283363a15fdced998a8736073752"
-)
-
-
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -26,7 +21,7 @@ def stripe_webhook(request):
     event = None
 
     try:
-        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
+        event = stripe.Webhook.construct_event(payload, sig_header, settings.STRIPE_WEBHOOK_SECRET)
     except ValueError as e:
         # Invalid payload
         return HttpResponse(status=400)
@@ -107,7 +102,6 @@ def email_failed_payment(session):
         recipient_list=[session.customer_email],
         fail_silently=False,
         message= f"Message: Failed Payment",
-        
     )
 
 def send_ebook(session):
@@ -129,14 +123,12 @@ def send_ebook(session):
         print(e)
 
 
-# Create your views here.
 def home(request):
     products = Product.objects.filter(archived=False)[:4]
     context = {"products": products}
     return render(request, "pages/index.html", context)
 
 
-# Create your views here.
 def product(request, id):
     host = request.META.get("HTTP_HOST")
     scheme = request.scheme
@@ -172,7 +164,6 @@ def product(request, id):
     return render(request, "pages/product.html", context)
 
 
-@login_required
 def products(request):
     try:
         products = Product.objects.filter(archived=False)[:6]
@@ -248,6 +239,31 @@ def signup(request):
     return render(request, "pages/signup.html")
 
 
+def contact(request):
+    context = {"email_modal": False}
+
+    if request.method == "POST":
+        contact_form = ContactForm(request.POST)
+
+        if contact_form.is_valid():
+            try:
+                send_mail(
+                    subject=contact_form.data.get("subject", ""),
+                    from_email=contact_form.data.get("email", ""),
+                    recipient_list=["admin@mail.com"],
+                    fail_silently=False,
+                    message=contact_form.data.get("message", ""),
+                )
+                context = {"email_modal": True}
+            except Exception as e:
+                context = {"email_error_message": "Seu email não foi enviado!"}
+                print(e)
+        else:
+            context = {"form": contact_form}
+
+    return render(request, "pages/contact.html", context)
+
+
 def logout_view(request):
     logout(request)
     return redirect("signin")
@@ -275,11 +291,6 @@ def orders(request):
 
 
 @login_required
-def payment(request):
-    return render(request, "pages/payment.html")
-
-
-@login_required
 def success(request):
     return render(request, "pages/success.html")
 
@@ -287,8 +298,3 @@ def success(request):
 @login_required
 def cancel(request):
     return render(request, "pages/cancel.html")
-
-
-
-def email(request):
-    return render(request, "pages/email.html")

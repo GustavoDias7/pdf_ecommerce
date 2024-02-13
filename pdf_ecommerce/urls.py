@@ -16,11 +16,10 @@ urlpatterns = [
     path("account/", views.account, name="account"),
     path("account/profile/", views.profile, name="profile"),
     path("account/orders/", views.orders, name="orders"),
-    path("account/payment/", views.payment, name="payment"),
     path("success/", views.success, name="success"),
     path("cancel/", views.cancel, name="cancel"),
+    path("contact/", views.contact, name="contact"),
     path("stripe-webhook/", views.stripe_webhook, name="stripe_webhook"),
-    path("email/", views.email, name="email"),
     path("api/", include("api.urls")),
 ]
 # Serving the media files in development mode

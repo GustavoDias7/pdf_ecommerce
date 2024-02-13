@@ -1,24 +1,33 @@
 <section class="section tertiary">
-  <div class="container">
-    <div class="form">
-      <div class="row">
-        <h2>Your Profile</h2>
-      </div>
-      <div class="row">
-        <p class="input filled active">{{user.email}}</p>
-        <label class="label">E-mail</label>
-      </div>
-      <div class="row">
-        <p class="input filled active">{{user.username}}</p>
-        <label class="label">Username</label>
-      </div>
-      <div class="row">
-        <p class="input filled active">{{user.first_name}}</p>
-        <label class="label">First Name</label>
-      </div>
-      <div class="row">
-        <p class="input filled active">{{user.last_name}}</p>
-        <label class="label">Last Name</label>
+  <div class="container lg:container">
+    <h2 class="text-2xl sm:text-3xl">Your Profile</h2>
+
+    <div class="g-root g-gap-4">
+      <div class="g-row">
+        <div class="g-item-12">
+          <div class="f-row">
+            <p class="f-input filled active">{{user.email}}</p>
+            <label class="f-label">E-mail</label>
+          </div>
+        </div>
+        <div class="g-item-12">
+          <div class="f-row">
+            <p class="f-input filled active">{{user.username}}</p>
+            <label class="f-label">Username</label>
+          </div>
+        </div>
+        <div class="g-item-12">
+          <div class="f-row">
+            <p class="f-input filled active">{{user.first_name}}</p>
+            <label class="f-label">First Name</label>
+          </div>
+        </div>
+        <div class="g-item-12">
+          <div class="f-row">
+            <p class="f-input filled active">{{user.last_name}}</p>
+            <label class="f-label">Last Name</label>
+          </div>
+        </div>
       </div>
     </div>
   </div>

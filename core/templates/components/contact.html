@@ -1,0 +1,85 @@
+<section class="section tertiary">
+  <div class="container md:container">
+    <h2 class="text-2xl sm:text-3xl">Contact Page</h2>
+
+    <form action="{% url 'contact' %}" method="post">
+      {% csrf_token %}
+      <div class="g-root g-gap-2 sm:g-gap-4">
+        <div class="g-row">
+          <div class="g-item-12 sm:g-item-6">
+            <div class="f-row">
+              <input
+                v-model="fields.name"
+                id="name"
+                name="name"
+                type="text"
+                class="f-input filled"
+                :class="active('name')"
+                value="{{form.name.value}}"
+              />
+              <label for="name" class="f-label">Seu nome</label>
+              {% if form.errors.name %}
+              <p class="f-helper error">{{form.errors.name.as_text}}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="g-item-12 sm:g-item-6">
+            <div class="f-row">
+              <input
+                v-model="fields.email"
+                id="email"
+                name="email"
+                type="text"
+                class="f-input filled"
+                :class="active('email')"
+                value="{{form.email.value}}"
+              />
+              <label for="email" class="f-label">Seu E-mail</label>
+              {% if form.errors.email %}
+              <p class="f-helper error">{{form.errors.email.as_text}}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="g-item-12">
+            <div class="f-row">
+              <input
+                v-model="fields.subject"
+                id="subject"
+                name="subject"
+                type="text"
+                class="f-input filled"
+                :class="active('subject')"
+                value="{{form.subject.value}}"
+              />
+              <label for="subject" class="f-label">Assunto do E-mail</label>
+              {% if form.errors.subject %}
+              <p class="f-helper error">{{form.errors.subject.as_text}}</p>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="g-item-12">
+            <div class="f-row">
+              <textarea
+                v-model="fields.message"
+                id="message"
+                name="message"
+                class="f-input filled"
+                :class="active('message')"
+                value="{{form.message.value}}"
+              ></textarea>
+              <label for="message" class="f-label">Sua mensagem</label>
+              {% if form.errors.message %}
+              <p class="f-helper error">{{form.errors.message.as_text}}</p>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="g-item-12">
+            <button class="gn-button pm-button full">Enviar e-mail</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

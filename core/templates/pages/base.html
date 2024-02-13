@@ -22,7 +22,9 @@
         {% block content %}{% endblock %}
 
         {% include "components/footer.html" %}
+        
         {% include "components/modals/logout.html" %}
+        {% block modals %}{% endblock %}
     </div>
     {% block vue %}
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

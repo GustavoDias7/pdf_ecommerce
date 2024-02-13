@@ -1,102 +1,108 @@
-<section>
-  <div class="container">
-    <div class="form-container">
-      <form action="/signup/" method="post" class="form">
-        {% csrf_token %}
+<section class="section tertiary">
+  <div class="container xs:container">
+    <h2 class="text-2xl sm:text-3xl">Sign up</h2>
 
-        <div class="row">
-          <h2 class="form-title">Sign up</h2>
-        </div>
+    <form action="{% url 'signup' %}" method="post">
+      {% csrf_token %}
 
-        <div class="row">
-          <input
-            v-model="fields.username"
-            id="username"
-            name="username"
-            type="text"
-            class="input filled"
-            :class="active('username')"
-            value="{{form.username.value}}"
-          />
-          <label for="username" class="label">Username</label>
-          {% if form.errors.username %}
-          <p class="helper-text error">{{form.errors.username.as_text}}</p>
-          {% endif %}
-        </div>
-
-        <div class="row">
-          <input
-            v-model="fields.email"
-            id="email"
-            name="email"
-            type="text"
-            class="input filled"
-            :class="active('email')"
-            value="{{form.email.value}}"
-          />
-          <label for="email" class="label">E-mail</label>
-          {% if form.errors.email %}
-          <p class="helper-text error">{{form.errors.email.as_text}}</p>
-          {% endif %}
-        </div>
-
-        <div class="row">
-          <div class="input-container">
-            <input
-              v-model="fields.password"
-              id="password"
-              name="password"
-              class="input filled"
-              :class="active('password')"
-              :type="passwords.main ? 'text' : 'password'"
-              value="{{form.password.value}}"
-            />
-            <label for="password" class="label">Password</label>
-            <div class="right-element">
-              <button
-                type="button"
-                class="gn-button sc-button"
-                @click="togglePassword('main')"
-                v-text="passwords.main ? 'Hide' : 'Show'"
-              ></button>
+      <div class="g-root g-gap-2 sm:g-gap-4">
+        <div class="g-row">
+          <div class="g-item-12">
+            <div class="f-row">
+              <input
+                v-model="fields.username"
+                id="username"
+                name="username"
+                type="text"
+                class="f-input filled"
+                :class="active('username')"
+                value="{{form.username.value}}"
+              />
+              <label for="username" class="f-label">Username</label>
+              {% if form.errors.username %}
+              <p class="f-helper error">{{form.errors.username.as_text}}</p>
+              {% endif %}
             </div>
           </div>
-          {% if form.errors.password %}
-          <p class="helper-text error">{{form.errors.password.as_text}}</p>
-          {% endif %}
-        </div>
-
-        <div class="row">
-          <div class="input-container">
-            <input
-              v-model="fields.confirm_password"
-              id="confirm_password"
-              name="confirm_password"
-              class="input filled"
-              :class="active('confirm_password')"
-              :type="passwords.confirm ? 'text' : 'password'"
-            />
-            <label for="confirm_password" class="label">Confirm Password</label>
-            <div class="right-element">
-              <button
-                type="button"
-                class="gn-button sc-button"
-                @click="togglePassword('confirm')"
-                v-text="passwords.confirm ? 'Hide' : 'Show'"
-              ></button>
+          <div class="g-item-12">
+            <div class="f-row">
+              <input
+                v-model="fields.email"
+                id="email"
+                name="email"
+                type="text"
+                class="f-input filled"
+                :class="active('email')"
+                value="{{form.email.value}}"
+              />
+              <label for="email" class="f-label">E-mail</label>
+              {% if form.errors.email %}
+              <p class="f-helper error">{{form.errors.email.as_text}}</p>
+              {% endif %}
             </div>
           </div>
-          {% if form.errors.confirm_password %}
-          <p class="helper-text error">
-            {{form.errors.confirm_password.as_text}}
-          </p>
-          {% endif %}
+          <div class="g-item-12">
+            <div class="f-row">
+              <div class="f-container">
+                <input
+                  v-model="fields.password"
+                  id="password"
+                  name="password"
+                  class="f-input filled"
+                  :class="active('password')"
+                  :type="passwords.main ? 'text' : 'password'"
+                  value="{{form.password.value}}"
+                />
+                <label for="password" class="f-label">Password</label>
+                <div class="f-right">
+                  <button
+                    type="button"
+                    class="gn-button sc-button small"
+                    @click="togglePassword('main')"
+                    v-text="passwords.main ? 'Hide' : 'Show'"
+                  ></button>
+                </div>
+              </div>
+              {% if form.errors.password %}
+              <p class="f-helper error">{{form.errors.password.as_text}}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="g-item-12">
+            <div class="f-container">
+              <input
+                v-model="fields.confirm_password"
+                id="confirm_password"
+                name="confirm_password"
+                class="f-input filled"
+                :class="active('confirm_password')"
+                :type="passwords.confirm ? 'text' : 'password'"
+              />
+              <label for="confirm_password" class="f-label"
+                >Confirm Password</label
+              >
+              <div class="f-right">
+                <button
+                  type="button"
+                  class="gn-button sc-button small"
+                  @click="togglePassword('confirm')"
+                  v-text="passwords.confirm ? 'Hide' : 'Show'"
+                ></button>
+              </div>
+            </div>
+            {% if form.errors.confirm_password %}
+            <p class="f-helper error">
+              {{form.errors.confirm_password.as_text}}
+            </p>
+            {% endif %}
+          </div>
+          <div class="g-item-12">
+            <div class="f-row">
+              <button class="gn-button pm-button full">Create acount</button>
+            </div>
+          </div>
         </div>
-
-        <div class="row">
-          <button class="gn-button pm-button full">Create account</button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </section>

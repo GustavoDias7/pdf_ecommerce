@@ -28,6 +28,12 @@
 }
 @include md {
   .primary-banner {
+    text-align: center;
+
+    .g-row {
+      flex-direction: column-reverse;
+    }
+
     h2 {
       font-weight: 500;
       font-size: 2rem;

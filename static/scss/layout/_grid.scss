@@ -34,6 +34,10 @@
   width: auto;
 }
 
+.g-reverse {
+  flex-direction: column-reverse;
+}
+
 @each $bp, $vl in $breakpoints {
   @media (min-width: $vl) {
     @for $i from 1 through 12 {
@@ -45,6 +49,10 @@
     .#{$bp}\:g-item-auto {
       flex: 0 0 auto;
       width: auto;
+    }
+
+    .#{$bp}\:g-reverse {
+      flex-direction: column-reverse;
     }
   }
 }
