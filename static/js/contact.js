@@ -1,15 +1,14 @@
 const { createApp, onMounted } = Vue;
 
-function getInputValue(field = "") {
-  return document.querySelector(`input#${field}`)?.value || "";
+function getInputValues(fields = []) {
+  const obj = {};
+  fields.forEach((f) => {
+    obj[f] = document.querySelector(`input#${f}`)?.value || "";
+  });
+  return obj;
 }
 
-const fields = {
-  name: getInputValue("name"),
-  email: getInputValue("email"),
-  subject: getInputValue("subject"),
-  message: getInputValue("message"),
-};
+const fields = getInputValues(["name", "email", "subject", "message"]);
 
 createApp({
   delimiters: ["[[", "]]"],

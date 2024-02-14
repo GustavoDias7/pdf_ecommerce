@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 
 # Arquivo models.py do app account
 from django.contrib.auth.models import (
@@ -102,9 +102,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         ],
     )
 
-    first_name = models.CharField(_("first name"), max_length=30)
+    first_name = models.CharField(_("first name"), max_length=30, validators=[MinLengthValidator(3)])
 
-    last_name = models.CharField(_("last name"), max_length=30)
+    last_name = models.CharField(_("last name"), max_length=30, validators=[MinLengthValidator(3)])
 
     email = models.EmailField(_("email address"), max_length=255, unique=True)
 

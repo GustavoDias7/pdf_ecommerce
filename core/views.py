@@ -9,6 +9,7 @@ from django.conf import settings
 import stripe
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.utils.crypto import get_random_string
 from django.http import HttpResponse
 
 
@@ -205,8 +206,7 @@ def signin(request):
 def signup(request):
     if request.method == "POST":
         user_form = UserForm(request.POST)
-        username = request.POST.get("username", "")
-        email = request.POST.get("email", "")
+
         password = request.POST.get("password", "")
         confirm_password = request.POST.get("confirm_password", "")
 
@@ -220,14 +220,22 @@ def signup(request):
             user_form.add_error("confirm_password", "Password is not equal")
 
         if user_form.is_valid():
+            # create username using first and last name
+            username = create_username(
+                user_form.data.get("first_name", ""), 
+                user_form.data.get("last_name", "")
+            )
+
             user = User.objects.create_user(
                 username=username,
-                email=email,
+                email=user_form.data.get("email", ""),
+                first_name=user_form.data.get("first_name", ""),
+                last_name=user_form.data.get("last_name", ""),
                 password=password,
             )
             user.save()
 
-            user = authenticate(email=email, password=password)
+            user = authenticate(email=user_form.data.get("email", ""), password=password)
 
             if user is not None:
                 login(request, user)
@@ -238,6 +246,10 @@ def signup(request):
 
     return render(request, "pages/signup.html")
 
+
+def create_username(fn, ln):
+    random_number = get_random_string(length=6, allowed_chars='0123456789')
+    return f"{fn[:2]}{ln[:2]}{random_number}".upper()
 
 def contact(request):
     context = {"email_modal": False}

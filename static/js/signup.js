@@ -1,50 +1,55 @@
-const { createApp, onMounted } = Vue
+const { createApp, onMounted } = Vue;
 
-function getInputValue(field = "") {
-    return document.querySelector(`input#${field}`)?.value || ""
+function getInputValues(fields = []) {
+  const obj = {};
+  fields.forEach((f) => {
+    obj[f] = document.querySelector(`input#${f}`)?.value || "";
+  });
+  return obj;
 }
 
-const fields = {
-    username: getInputValue("username"),
-    email: getInputValue("email"),
-    password: getInputValue("password"),
-    confirm_password: getInputValue("confirm_password"),
-}
+const fields = getInputValues([
+  "first_name",
+  "last_name",
+  "email",
+  "password",
+  "confirm_password",
+]);
 
 createApp({
-    delimiters: ["[[", "]]"],
-    data() {
-        return {
-            fields,
-            modal: {
-                menu: false,
-                logout: false
-            },
-            passwords: {
-                main: false,
-                confirm: false
-            } 
-        }
+  delimiters: ["[[", "]]"],
+  data() {
+    return {
+      fields,
+      modal: {
+        menu: false,
+        logout: false,
+      },
+      passwords: {
+        main: false,
+        confirm: false,
+      },
+    };
+  },
+  methods: {
+    togglePassword(name = "") {
+      this.passwords[name] = !this.passwords[name];
     },
-    methods: {
-        togglePassword(name = "") {
-            this.passwords[name] = !this.passwords[name]
-        },
-        openModal(name = "") {
-            this.modal[name] = true
-        },
-        closeModal(name = "") {
-            this.modal[name] = false
-        },
-        active(field = "") {
-            return {active: this.fields[field] != ""}
-        },
-        openLogout() {
-            this.closeModal("menu")
-            this.modal.logout = true
-        },
-        closeLogout() {
-            this.modal.logout = false
-        }
+    openModal(name = "") {
+      this.modal[name] = true;
     },
-}).mount('#app')
+    closeModal(name = "") {
+      this.modal[name] = false;
+    },
+    active(field = "") {
+      return { active: this.fields[field] != "" };
+    },
+    openLogout() {
+      this.closeModal("menu");
+      this.modal.logout = true;
+    },
+    closeLogout() {
+      this.modal.logout = false;
+    },
+  },
+}).mount("#app");
