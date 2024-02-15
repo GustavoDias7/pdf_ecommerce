@@ -136,4 +136,4 @@ GitHub.sublime-settings
 !.vscode/extensions.json 
 .history
 
-static/CACHE/css
+staticfiles/CACHE/css
