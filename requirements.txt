@@ -2,8 +2,10 @@ aiosmtpd==1.4.4.post2
 asgiref==3.7.2
 atpublic==4.0
 attrs==23.2.0
+Brotli==1.1.0
 certifi==2023.11.17
 charset-normalizer==3.3.2
+dj-database-url==2.1.0
 Django==4.2.6
 django-appconf==1.0.5
 django-compressor==4.4
@@ -11,6 +13,7 @@ django-cors-headers==4.3.1
 django-libsass==0.9
 djangorestframework==3.14.0
 environs==10.3.0
+gunicorn==21.2.0
 idna==3.6
 libsass==0.22.0
 marshmallow==3.20.2
@@ -29,3 +32,4 @@ sqlparse==0.4.4
 stripe==7.13.0
 typing_extensions==4.8.0
 urllib3==2.1.0
+whitenoise==6.6.0
