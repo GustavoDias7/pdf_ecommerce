@@ -97,7 +97,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ),
         validators=[
             validators.RegexValidator(
-                re.compile("^[\w.@+-]+$"), _("Enter a valid username."), _("invalid")
+                re.compile("^[a-zA-Z0-9_.-]+$"), _("Enter a valid username."), _("invalid")
             )
         ],
     )
