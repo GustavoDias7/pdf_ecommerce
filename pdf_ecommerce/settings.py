@@ -219,3 +219,4 @@ EMAIL_PORT = os.environ.get("EMAIL_PORT")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
