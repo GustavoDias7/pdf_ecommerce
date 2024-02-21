@@ -192,11 +192,6 @@ STATICFILES_FINDERS = (
     "compressor.finders.CompressorFinder",
 )
 
-# whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
-
 COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 MEDIA_URL = "/media/"
