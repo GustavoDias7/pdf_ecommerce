@@ -1,1 +1,14 @@
-<h1>Test Page</h1>
+{% extends './base.html' %}
+
+{% block title %}
+  Tests Page
+{% endblock %}
+
+{% block scss %}
+{% load static %}
+<link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <h1>Test Page</h1>
+{% endblock %}
