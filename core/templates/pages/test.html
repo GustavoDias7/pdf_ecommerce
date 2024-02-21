@@ -15,34 +15,6 @@
   </head>
   <body>
     <div class="app" id="app">
-      <header class="header">
-        <div class="container lg:container">
-          <div class="left">
-            <a class="logo" href="{% url 'home' %}">LOGO</a>
-          </div>
-          <div class="right">
-            <nav>
-              <a class="link" href="{% url 'contact' %}">Contact</a>
-              <a class="link" href="{% url 'products' %}">Products</a>
-              {% if user.is_authenticated %}
-              <a class="link" href="{% url 'account' %}">Account</a>
-              <button class="link" @click="openLogout">Log out</button>
-              {% else %}
-              <a class="gn-button sc-button" href="{% url 'signin' %}"
-                >Sign in</a
-              >
-              <a class="gn-button pm-button" href="{% url 'signup' %}"
-                >Sign up</a
-              >
-              {% endif %}
-            </nav>
-            <button @click="openModal('menu')" class="menu-button">
-              Open menu
-            </button>
-          </div>
-        </div>
-      </header>
-
       <h1>Test Page</h1>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
