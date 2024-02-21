@@ -11,6 +11,9 @@ from django.utils.crypto import get_random_string
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+def test(request):
+    return render(request, "pages/test.html")
+
 def home(request):
     products = Product.objects.filter(archived=False)[:4]
     context = {"products": products}
