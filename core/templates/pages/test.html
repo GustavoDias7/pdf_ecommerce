@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Page</title>
+    {% load static %}
+    {% load compress %}
+    {% compress css %}
+    <link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
   </head>
   <body>
     <div class="app" id="app">
