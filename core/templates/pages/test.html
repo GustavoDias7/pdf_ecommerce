@@ -1,14 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Page</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
   </head>
   <body>
     <div class="app" id="app">
       <h1>Test Page</h1>
-      {% load static %}
       <img src="{% static "img/site.svg" %}" />
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
