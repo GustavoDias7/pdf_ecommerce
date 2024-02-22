@@ -14,10 +14,6 @@ def webhook_stripe(request):
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
     event = None
 
-
-    print("payload", payload)
-    print("sig_header", sig_header)
-
     try:
         event = stripe.Webhook.construct_event(payload, sig_header, settings.STRIPE_WEBHOOK_SECRET)
     except ValueError as e:
