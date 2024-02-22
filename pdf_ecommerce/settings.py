@@ -49,6 +49,8 @@ else:
 
 AUTH_USER_MODEL = "core.User"
 
+CSRF_TRUSTED_ORIGINS = ["https://*.stripe.com/"]
+
 LOGIN_URL = "/signin/"
 
 # Application definition
