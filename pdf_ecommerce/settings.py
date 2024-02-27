@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "gdstorage",
     "compressor",
     "rest_framework",
     "corsheaders",
@@ -231,18 +232,22 @@ if IS_HEROKU_APP:
 else:
     COMPRESS_OFFLINE = False
    
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#              'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+#         },
+#     },
+# }
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = None
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = ""
+

@@ -8,7 +8,7 @@
           <article class="card primary">
             <a href="{% url 'product' id=product.id %}">
               <figure class="img">
-                <img src="{{ product.image.url }}" alt="{{product.name}}" />
+                <img src="{{ product.get_image }}" alt="{{product.name}}" />
               </figure>
             </a>
             <div class="description">

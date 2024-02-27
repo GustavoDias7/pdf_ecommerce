@@ -13,16 +13,22 @@ from django.utils.translation import gettext_lazy as _
 import re
 from django.utils import timezone
 from django.core.mail import send_mail
+from gdstorage.storage import GoogleDriveStorage
+from urllib.parse import urlparse
+from urllib.parse import parse_qs
 
 
-# Create your models here.
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
+
+
 class Product(models.Model):
     name = models.CharField(max_length=30)
     price = models.IntegerField()
     stripe_price_id = models.CharField(max_length=35, null=True, blank=True)
     description = models.TextField(max_length=400)
-    image = models.ImageField(upload_to="images/", null=True)
-    pdf = models.FileField(upload_to="pdfs/", null=True)
+    image = models.ImageField(upload_to="images/", storage=gd_storage, null=True)
+    pdf = models.FileField(upload_to="pdfs/", storage=gd_storage, null=True)
     archived = models.BooleanField(default=False)
     discount = models.DecimalField(
         max_digits=3,
@@ -30,6 +36,11 @@ class Product(models.Model):
         default=0.0,
         validators=[MinValueValidator(0), MaxValueValidator(1)],
     )
+    
+    def get_image(self):
+        parsed_url = urlparse(self.image.url)
+        image_id = parse_qs(parsed_url.query)['id'][0]
+        return f"https://drive.google.com/thumbnail?id={image_id}&sz=w1000"
 
     def __str__(self):
         return f"{self.name}"

@@ -27,8 +27,12 @@ def product(request, id):
 
     try:
         product = Product.objects.filter(archived=False).get(pk=id)
-        context = {"product": product}
-    except:
+        # print(type(product.image))
+        file = product.image
+        print(file)
+        context = {"product": product, "file": file}
+    except Exception as e:
+        print(e)
         context = {"error": "Desculpe, o produto solicitado não existe."}
 
     if request.method == "POST":
