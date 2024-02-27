@@ -1,8 +1,6 @@
 from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
-
-# Arquivo models.py do app account
 from django.contrib.auth.models import (
     AbstractBaseUser,
     PermissionsMixin,
@@ -60,6 +58,11 @@ class Order(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(0), MaxValueValidator(1)],
     )
+
+    def get_image(self):
+        parsed_url = urlparse(self.product.image.url)
+        image_id = parse_qs(parsed_url.query)['id'][0]
+        return f"https://drive.google.com/thumbnail?id={image_id}&sz=w1000"
 
     def __str__(self):
         return f"Order {self.id}"

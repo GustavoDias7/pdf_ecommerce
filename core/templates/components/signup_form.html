@@ -2,7 +2,7 @@
   <div class="container xs:container">
     <h2 class="text-2xl sm:text-3xl">Sign up</h2>
 
-    <form action="{% url 'signup' %}" method="post">
+    <form action="{% url 'signup' %}{{next_page}}" method="post">
       {% csrf_token %}
 
       <div class="g-root g-gap-2 sm:g-gap-4">

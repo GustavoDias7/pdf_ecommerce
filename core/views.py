@@ -27,34 +27,34 @@ def product(request, id):
 
     try:
         product = Product.objects.filter(archived=False).get(pk=id)
-        # print(type(product.image))
-        file = product.image
-        print(file)
-        context = {"product": product, "file": file}
+        context = {"product": product}
     except Exception as e:
         print(e)
         context = {"error": "Desculpe, o produto solicitado não existe."}
 
     if request.method == "POST":
-        try:
-            checkout_session = stripe.checkout.Session.create(
-                line_items=[
-                    {
-                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        "price": f"{product.stripe_price_id}",
-                        "quantity": 1,
-                    },
-                ],
-                mode="payment",
-                success_url=f"{url}/success",
-                cancel_url=f"{url}/cancel",
-                customer_email=request.user.email,
-                metadata={"product_id": product.id},
-            )
+        if request.user.is_authenticated:
+            try:
+                checkout_session = stripe.checkout.Session.create(
+                    line_items=[
+                        {
+                            # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                            "price": f"{product.stripe_price_id}",
+                            "quantity": 1,
+                        },
+                    ],
+                    mode="payment",
+                    success_url=f"{url}/success",
+                    cancel_url=f"{url}/cancel",
+                    customer_email=request.user.email,
+                    metadata={"product_id": product.id},
+                )
 
-            return redirect(checkout_session.url, code=303)
-        except Exception as e:
-            print(e)
+                return redirect(checkout_session.url, code=303)
+            except Exception as e:
+                print(e)
+        else:
+            return redirect(f"/signin?next={request.path}")
 
     return render(request, "pages/product.html", context)
 
@@ -74,6 +74,11 @@ def products(request):
 
 
 def signin(request):
+    next_page = request.GET.get('next', "")
+    context = {}
+    if next_page:
+        context["next_page"] = f"?next={next_page}"
+
     if request.method == "POST":
         login_form = LoginForm(request.POST)
 
@@ -85,19 +90,29 @@ def signin(request):
 
             if user is not None:
                 login(request, user)
-                return redirect("profile")
+
+                if next_page:
+                    return redirect(next_page)
+                else:
+                    return redirect("profile")
+
             else:
                 login_form.add_error(None, "E-mail or password was incorrect.")
-                context = {"form": login_form}
+                context["form"] = login_form
                 return render(request, "pages/signin.html", context)
         else:
-            context = {"form": login_form}
+            context["form"] = login_form
             return render(request, "pages/signin.html", context)
 
-    return render(request, "pages/signin.html")
+    return render(request, "pages/signin.html", context)
 
 
 def signup(request):
+    next_page = request.GET.get('next', "")
+    context = {}
+    if next_page:
+        context["next_page"] = f"?next={next_page}"
+    
     if request.method == "POST":
         user_form = UserForm(request.POST)
 
@@ -133,12 +148,16 @@ def signup(request):
 
             if user is not None:
                 login(request, user)
-                return redirect("profile")
+                
+                if next_page:
+                    return redirect(next_page)
+                else:
+                    return redirect("profile")
         else:
-            context = {"form": user_form}
+            context["form"] = user_form
             return render(request, "pages/signup.html", context)
 
-    return render(request, "pages/signup.html")
+    return render(request, "pages/signup.html", context)
 
 
 def create_username(fn, ln):

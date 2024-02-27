@@ -10,8 +10,8 @@
     <button class="link" @click="openLogout">Log out</button>
     {% else %}
     <div class="buttons">
-      <a class="gn-button sc-button" href="{% url 'signin' %}">Sign in</a>
-      <a class="gn-button pm-button" href="{% url 'signup' %}">Sign up</a>
+      <a class="gn-button sc-button" href="{% url 'signin' %}{{next_page}}">Sign in</a>
+      <a class="gn-button pm-button" href="{% url 'signup' %}{{next_page}}">Sign up</a>
     </div>
     {% endif %}
   </nav>

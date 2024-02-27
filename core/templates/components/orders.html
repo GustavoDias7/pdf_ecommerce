@@ -8,7 +8,7 @@
     <div class="order-item">
       <div>
         <a href="{% url 'product' id=order.product.id %}">
-          <img src="{{order.product.image.url}}" alt="{{order.product.name}}" />
+          <img src="{{order.get_image}}" alt="{{order.product.name}}" />
         </a>
       </div>
       <div>

@@ -1,13 +1,15 @@
+{% load static %}
+{% load compress %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
     <title>
         {% block title %}Default title{% endblock %}
     </title>
-    {% load static %}
-    {% load compress %}
     {% compress css %}
         {% block scss %}
             <link type="text/x-scss" href="{% static 'scss/page/main.scss' %}" rel="stylesheet" media="screen">
