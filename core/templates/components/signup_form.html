@@ -1,6 +1,6 @@
 <section class="section tertiary">
   <div class="container xs:container">
-    <h2 class="text-2xl sm:text-3xl">Sign up</h2>
+    <h2 class="text-2xl sm:text-3xl">Cadastrar</h2>
 
     <form action="{% url 'signup' %}{{next_page}}" method="post">
       {% csrf_token %}
@@ -18,7 +18,7 @@
                 :class="active('first_name')"
                 value="{{form.first_name.value}}"
               />
-              <label for="first_name" class="f-label">First name</label>
+              <label for="first_name" class="f-label">Nome</label>
               {% if form.errors.first_name %}
               <p class="f-helper error">{{form.errors.first_name.as_text}}</p>
               {% endif %}
@@ -35,7 +35,7 @@
                 :class="active('last_name')"
                 value="{{form.last_name.value}}"
               />
-              <label for="last_name" class="f-label">Last name</label>
+              <label for="last_name" class="f-label">Sobrenome</label>
               {% if form.errors.last_name %}
               <p class="f-helper error">{{form.errors.last_name.as_text}}</p>
               {% endif %}
@@ -70,13 +70,13 @@
                   :type="passwords.main ? 'text' : 'password'"
                   value="{{form.password.value}}"
                 />
-                <label for="password" class="f-label">Password</label>
+                <label for="password" class="f-label">Senha</label>
                 <div class="f-right">
                   <button
                     type="button"
                     class="gn-button sc-button small"
                     @click="togglePassword('main')"
-                    v-text="passwords.main ? 'Hide' : 'Show'"
+                    v-text="passwords.main ? 'Esconder' : 'Mostrar'"
                   ></button>
                 </div>
               </div>
@@ -96,14 +96,14 @@
                 :type="passwords.confirm ? 'text' : 'password'"
               />
               <label for="confirm_password" class="f-label"
-                >Confirm Password</label
+                >Confirmar Senha</label
               >
               <div class="f-right">
                 <button
                   type="button"
                   class="gn-button sc-button small"
                   @click="togglePassword('confirm')"
-                  v-text="passwords.confirm ? 'Hide' : 'Show'"
+                  v-text="passwords.confirm ? 'Esconder' : 'Mostrar'"
                 ></button>
               </div>
             </div>
@@ -115,7 +115,7 @@
           </div>
           <div class="g-item-12">
             <div class="f-row">
-              <button class="gn-button pm-button full">Create acount</button>
+              <button class="gn-button pm-button full">Cadastrar</button>
             </div>
           </div>
         </div>

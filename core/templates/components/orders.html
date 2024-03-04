@@ -2,7 +2,7 @@
 
 <section class="section tertiary">
   <div class="container md:container">
-    <h2>Your Orders</h2>
+    <h2>Seus Pedidos</h2>
     <br />
     {% if orders %} {% for order in orders %}
     <div class="order-item">
@@ -17,13 +17,13 @@
             {{order.product.name}}
           </a>
         </h3>
-        <p>Order ID: {{order.id}}</p>
+        <p>ID do produto: {{order.id}}</p>
         <p>{{order.date}}</p>
-        <p>Payment status: {{order.payment_status|payment_status}}</p>
+        <p>Estado do Pagamento: {{order.payment_status|payment_status}}</p>
 
         {% if order.discount > 0 %}
-        <p>Price: R$ {{order.unit_price|cents_price}}</p>
-        <p>Discount: {{order.discount}}</p>
+        <p>Preço: R$ {{order.unit_price|cents_price}}</p>
+        <p>Disconto: {{order.discount}}</p>
         <p>
           <strong
             >Total: R$ {% total_price order.unit_price order.discount %}</strong
@@ -37,7 +37,7 @@
       </div>
     </div>
     {% endfor %} {% else %}
-    <p>Thare is no orders in your account!</p>
+    <p>Não há pedidos na sua conta!</p>
     {% endif %}
   </div>
 </section>

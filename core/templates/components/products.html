@@ -23,14 +23,14 @@
                 id="show-more-{{product.id}}"
                 @click="showMore('{{product.id}}')"
               >
-                show more
+                mostrar mais
               </button>
 
               <a
                 class="gn-button pm-button full"
                 href="{% url 'product' id=product.id %}"
               >
-                See more
+                Ver mais
               </a>
             </div>
           </article>
@@ -62,14 +62,14 @@
                 :id="`show-more-${[[product.id]]}`"
                 @click="showMore([[product.id]])"
               >
-                show more
+                mostrar mais
               </button>
 
               <a
                 class="gn-button pm-button full"
                 :href="`/product/${product.id}`"
               >
-                See more
+                Ver mais
               </a>
             </div>
           </article>

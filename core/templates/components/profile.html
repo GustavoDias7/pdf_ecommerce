@@ -1,9 +1,21 @@
 <section class="section tertiary">
   <div class="container md:container">
-    <h2 class="text-2xl sm:text-3xl">Your Profile</h2>
+    <h2 class="text-2xl sm:text-3xl">Seu Perfil</h2>
 
     <div class="g-root g-gap-4">
       <div class="g-row">
+        <div class="g-item-12">
+          <div class="f-row">
+            <p class="f-input filled active">{{user.first_name}}</p>
+            <label class="f-label">Nome</label>
+          </div>
+        </div>
+        <div class="g-item-12">
+          <div class="f-row">
+            <p class="f-input filled active">{{user.last_name}}</p>
+            <label class="f-label">Sobrenome</label>
+          </div>
+        </div>
         <div class="g-item-12">
           <div class="f-row">
             <p class="f-input filled active">{{user.email}}</p>
@@ -13,19 +25,7 @@
         <div class="g-item-12">
           <div class="f-row">
             <p class="f-input filled active">{{user.username}}</p>
-            <label class="f-label">Username</label>
-          </div>
-        </div>
-        <div class="g-item-12">
-          <div class="f-row">
-            <p class="f-input filled active">{{user.first_name}}</p>
-            <label class="f-label">First Name</label>
-          </div>
-        </div>
-        <div class="g-item-12">
-          <div class="f-row">
-            <p class="f-input filled active">{{user.last_name}}</p>
-            <label class="f-label">Last Name</label>
+            <label class="f-label">Nome de usuário</label>
           </div>
         </div>
       </div>

@@ -32,10 +32,10 @@ createApp({
 
       if (!$seeMore.classList.contains("active")) {
         $seeMore.classList.add("active");
-        $showMore.innerText = "show less";
+        $showMore.innerText = "mostrar menos";
       } else {
         $seeMore.classList.remove("active");
-        $showMore.innerText = "show more";
+        $showMore.innerText = "mostrar mais";
       }
     },
     async getProducts() {

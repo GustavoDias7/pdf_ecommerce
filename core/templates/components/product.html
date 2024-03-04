@@ -13,17 +13,17 @@
           <section>
             <ul>
               <li>
-                <strong>Description:</strong>
+                <strong>Descrição:</strong>
                 <span> {{product.description}} </span>
               </li>
 
               {% if product.discount > 0 %}
               <li>
-                <strong>Price:</strong>
+                <strong>Preço:</strong>
                 <span> R$ {{product.price|cents_price}}</span>
               </li>
               <li>
-                <strong>Discount:</strong>
+                <strong>Disconto:</strong>
                 <span> -{{product.discount|percent}}% </span>
               </li>
               {% endif %}
@@ -39,7 +39,7 @@
         {% if product.stripe_price_id %}
         <form action="{% url 'product' id=product.id %}" method="POST">
           {% csrf_token %}
-          <button class="gn-button pm-button full">Checkout</button>
+          <button class="gn-button pm-button full">Comprar</button>
         </form>
         {% endif %}
       </aside>

@@ -1,6 +1,6 @@
 <section class="section tertiary">
   <div class="container xs:container">
-    <h2 class="text-2xl sm:text-3xl">Sign in</h2>
+    <h2 class="text-2xl sm:text-3xl">Login</h2>
 
     <form action="{% url 'signin' %}{{next_page}}" method="post">
       {% csrf_token %}
@@ -35,13 +35,13 @@
                   :class="active('password')"
                   :type="passwords.main ? 'text' : 'password'"
                 />
-                <label for="password" class="f-label">Password</label>
+                <label for="password" class="f-label">Senha</label>
                 <div class="f-right">
                   <button
                     type="button"
                     class="gn-button sc-button small"
                     @click="togglePassword('main')"
-                    v-text="passwords.main ? 'Hide' : 'Show'"
+                    v-text="passwords.main ? 'Esconder' : 'Mostrar'"
                   ></button>
                 </div>
               </div>
@@ -61,7 +61,7 @@
           {% endif %}
           <div class="g-item-12">
             <div class="f-row">
-              <button class="gn-button pm-button full">Login</button>
+              <button class="gn-button pm-button full">Entrar</button>
             </div>
           </div>
         </div>
